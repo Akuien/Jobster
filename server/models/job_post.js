@@ -27,7 +27,7 @@ JobPostSchema
         return deadline;
     });
 
-// return deadline
+// return post date
 
 JobPostSchema
     .virtual('post date')
@@ -44,4 +44,4 @@ JobPostSchema
     });
 
 
-models.exports = mongoose('Job_Post', JobPostSchema);
+module.exports = mongoose('Job_Post', JobPostSchema);
