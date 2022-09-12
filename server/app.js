@@ -19,6 +19,8 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true }, 
     console.log(`Connected to MongoDB with URI: ${mongoURI}`);
 });
 
+
+
 // Create Express app
 var app = express();
 // Parse requests of content-type 'application/json'
@@ -33,7 +35,10 @@ app.use(cors());
 // Import routes
 app.get('/api', function(req, res) {
     res.json({'message': 'Welcome to your DIT342 backend ExpressJS project!'});
-});
+}); 
+
+/*const routes = require('./server/routes/index.js');
+app.use('/api' , routes); */
 
 // Catch all non-error handler for api (i.e., 404 Not Found)
 app.use('/api/*', function (req, res) {
