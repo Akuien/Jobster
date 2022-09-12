@@ -5,6 +5,8 @@ const Schema = mongoose.Schema;
 const FreelancerSchema = new Schema({
     first_name: { type: String, required: true },
     last_name: { type: String, required: true },
+    email_address: { type: String, required: true },
+    phone_number: { type: String, required: true },
     id: { type: String, required: true },
     description: { type: String, required: true }
 });
