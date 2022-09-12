@@ -8,7 +8,8 @@ const FreelancerSchema = new Schema({
     email_address: { type: String, required: true },
     phone_number: { type: String, required: true },
     id: { type: String, required: true },
-    description: { type: String, required: true }
+    description: { type: String, required: true },
+    password: { type: String, required: true }
 });
 
 // Returning full name

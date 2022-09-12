@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
-
 const Schema = mongoose.Schema;
-
 
 const CompanySchema = new Schema({
     company_name: { type: String, required: true },
@@ -12,7 +10,10 @@ const CompanySchema = new Schema({
         address: { type: String, required: true },
     },
 
-    company_id: { type: String, required: true }
+    company_email: { type: String, required: true },
+    company_phone: {type: String, required: true },
+    company_id: { type: String, required: true },
+    password: {type: String, required: true}
 });
 
 // getting company name
@@ -29,7 +30,7 @@ CompanySchema
 CompanySchema
     .virtual("company_id")
     .get(function() {
-        return company_id
+        return company_id;
     });
 
 // getting company description
