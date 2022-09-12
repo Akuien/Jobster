@@ -11,7 +11,8 @@ const CompanySchema = new Schema({
         country: { type: String, required: true },
         address: { type: String, required: true },
     },
-    
+
+    company_id: { type: String, required: true }
 });
 
 // getting company name
@@ -20,6 +21,15 @@ CompanySchema
     .virtual('name')
     .get(function () {
         return company_name;
+    });
+
+
+// getting company id
+
+CompanySchema
+    .virtual("company_id")
+    .get(function() {
+        return company_id
     });
 
 // getting company description
