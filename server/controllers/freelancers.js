@@ -33,7 +33,6 @@ const getOneFreelancer = async (request, response, next) => {
     });
 }
 
-
 // delete one freelancer
 
 const deleteOneFreelancer = async (request, response, next) => {
