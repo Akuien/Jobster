@@ -3,10 +3,10 @@ const router = express.Router();
 const mongoose = require("mongoose");
 
 const routes = {
-  companies: require("./company"),
-  freelancers: require("./freelancer"),
-  job_posts: require("./job_post"),
-  resumes: require("./resume")
+  companies: require("./companies"),
+  freelancers: require("./freelancers"),
+  job_posts: require("./job_posts"),
+  resumes: require("./resumes")
 };
 
 // to pass tests at the moment
