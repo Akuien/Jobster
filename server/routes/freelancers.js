@@ -119,8 +119,8 @@ router.get('/freelancers/:id/job_posts/:id', function (request, response, next) 
             return response.status(404).json({ "message": "Freelancer not found" });
         } 
         
-    const job_id = request.params.id
-        JobPostModel.findById(job_id, function (error, job_post) {
+
+        JobPostModel.find(function (error, job_post) {
             if (error) { return next(error); }
             if (job_post == null) {
                 return response.status(404).json({ "message": "Job post not found" });
@@ -129,7 +129,6 @@ router.get('/freelancers/:id/job_posts/:id', function (request, response, next) 
         });
     });
 });
-
 
 
 
