@@ -14,7 +14,7 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true }, 
     console.log(`Connected to MongoDB with URI: ${mongoURI}`);
 });
 
-function login_user(mail, password) {
+function loginUser(mail, password) {
     freelancer.findOne({email_address: mail}, function (err, user) {
         if (err) {
             return "err"

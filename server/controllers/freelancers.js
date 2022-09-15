@@ -4,7 +4,7 @@ const user_login = require("../logins/loginUser")
 const FreelancerCommands = require('../controllers/freelancers');
 const FreelancerModel = require('../models/freelancer');
 const JobPostModel = require('../models/job_post');
-
+const user_login = require("../logins/loginUser")
 router.post('/freelancers', (request, response, next) => {
     
     const freelancer = new FreelancerModel(request.body);
@@ -119,6 +119,24 @@ router.get('/freelancers/:id/job_posts/:id', function (request, response, next) 
         
 const loginUser = async (request, response, next, email, password) => {
     const user = loginUser.user_login(email, password)
+
+    if (user == "err") {
+        return next(user)
+    }
+
+    if (freelancer == "user_not_found") {
+        return response.status(404).json({ "message": "Invalid email", "logged_in": false, })
+    }
+
+    if (freelancer == "invalid_password") {
+        return response.status(401).json({ "message": "Wrong password", "logged_in": false, })
+    }
+
+    response.json({"user": user, "logged_in": true,})
+}
+
+const login_user = async (request, response, next, email, password) => {
+    const user = loginUser.loginUser(email, password)
 
     if (user == "err") {
         return next(user)
