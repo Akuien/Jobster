@@ -28,7 +28,7 @@ CompanySchema
 // getting company id
 
 CompanySchema
-    .virtual("company_id")
+    .virtual("Company_id")
     .get(function() {
         return company_id;
     });
@@ -36,7 +36,7 @@ CompanySchema
 // getting company description
 
 CompanySchema
-    .virtual('description')
+    .virtual('Description')
     .get(function () {
         return description;
     });

@@ -23,7 +23,7 @@ FreelancerSchema
 // Return description
 
 FreelancerSchema
-    .virtual('description')
+    .virtual('Description')
     .get(function () {
         return description;
     })
@@ -31,7 +31,7 @@ FreelancerSchema
 // Return id
 
 FreelancerSchema
-    .virtual('id')
+    .virtual('ID')
     .get(function () {
         return id;
     })
