@@ -37,6 +37,7 @@ app.get('/api', function(req, res) {
     res.json({'message': 'Welcome to your DIT342 backend ExpressJS project!'});
 }); 
 
+/*
 //const routes = require('../server/Controllers/index.js');
 const CompaniesRoutes = require('./Controllers/companies');
 const freelancersRoutes = require('./Controllers/freelancers');
@@ -46,7 +47,7 @@ const resumesRoutes = require('./Controllers/resumes');
 app.use('/api' , CompaniesRoutes);
 app.use('/api' , freelancersRoutes);
 app.use('/api' , Job_post_Routes);
-app.use('/api' , resumesRoutes);
+app.use('/api' , resumesRoutes);  */
 
 
 // Catch all non-error handler for api (i.e., 404 Not Found)
