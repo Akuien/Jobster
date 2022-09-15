@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-const freelancer = require("./models/freelancer.js")
+const freelancer = require("../models/freelancer.js")
 
 // Variables
 var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/WebDevDatabase';
@@ -15,19 +15,21 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true }, 
 });
 
 function login_user(mail, password) {
-    const User = mongoose.model(freelancer)
-
-    User.exists({email: mail}, function(err, doc) {
+    freelancer.findOne({email_address: mail}, function (err, user) {
         if (err) {
-            return "invalid_email"
+            return "err"
         }
 
-        let user =  User.findOne("email", mail)
-        
-        if (user.password == password) {
-            return user
+        if (freelancer == null) {
+            return "user_not_found"
         }
 
-        return "wrong_password"
+        if (freelancer.password != password) {
+            return "invalid_password"
+        }
+
+        return freelancer
     })
 }
+
+module.exports(login_user)
