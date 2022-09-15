@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const user_login = require("../logins/loginUser")
+const user_login = require("../logins/loginUser");
 const FreelancerCommands = require('../controllers/freelancers');
 const FreelancerModel = require('../models/freelancer');
 const JobPostModel = require('../models/job_post');
-const user_login = require("../logins/loginUser")
+
 router.post('/freelancers', (request, response, next) => {
     
     const freelancer = new FreelancerModel(request.body);
