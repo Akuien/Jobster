@@ -37,7 +37,7 @@ app.get('/api', function(req, res) {
     res.json({'message': 'Welcome to your DIT342 backend ExpressJS project!'});
 }); 
 
-const routes = require('./Controllers');
+const routes = require('./Controllers/index');
 app.use('/api' , routes);
 
 // Catch all non-error handler for api (i.e., 404 Not Found)
