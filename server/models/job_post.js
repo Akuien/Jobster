@@ -22,7 +22,7 @@ JobPostSchema
 // return deadline
 
 JobPostSchema
-    .virtual('deadline')
+    .virtual('Deadline')
     .get(function () {
         return deadline;
     });
@@ -30,7 +30,7 @@ JobPostSchema
 // return post date
 
 JobPostSchema
-    .virtual('post date')
+    .virtual('Post date')
     .get(function () {
         return post_date;
     });
@@ -38,7 +38,7 @@ JobPostSchema
 // return description
 
 JobPostSchema
-    .virtual('description')
+    .virtual('Description')
     .get(function () {
         return description;
     });
