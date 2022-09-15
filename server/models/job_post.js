@@ -44,4 +44,4 @@ JobPostSchema
     });
 
 
-module.exports = mongoose('Job_Post', JobPostSchema);
+module.exports = mongoose.model('Job_Post', JobPostSchema);
