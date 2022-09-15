@@ -32,4 +32,4 @@ function loginUser(mail, password) {
     })
 }
 
-module.exports(login_user)
+//module.exports(login_user)

@@ -45,3 +45,4 @@ router.delete('/job_posts/:id', function(req, res, next) {
     });
 });
 
+module.exports = router;
