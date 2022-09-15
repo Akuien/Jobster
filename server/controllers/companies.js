@@ -55,5 +55,3 @@ const deleteOneCompany = async (request, response, next) => {
         return json(freelancer);
     })
 }
-
-//module.exports = router;
