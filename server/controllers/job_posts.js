@@ -27,7 +27,7 @@ router.get('/job_posts/:id', function(req, res, next) {
     Job_post.findById(id, function(err, job_post) {
         if (err) { return next(err); }
         if (job_post === null) {
-            return res.status(404).json({'message': 'Job_post not found!'});
+            return res.status(404).json({'message': 'Job post not found!'});
         }
         res.json(job_post);
     });
@@ -39,9 +39,11 @@ router.delete('/job_posts/:id', function(req, res, next) {
     Job_post.findOneAndDelete({_id: id}, function(err, job_post) {
         if (err) { return next(err); }
         if (job_post === null) {
-            return res.status(404).json({'message': 'Job_post not found'});
+            return res.status(404).json({'message': 'Job post not found'});
         }
         res.json(job_post);
     });
 });
 
+
+module.exports = router;

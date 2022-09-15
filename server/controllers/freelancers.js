@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const user_login = require("../logins/loginUser")
+
 const FreelancerCommands = require('../controllers/freelancers');
 const FreelancerModel = require('../models/freelancer');
 const JobPostModel = require('../models/job_post');
+
+
 
 router.post('/freelancers', (request, response, next) => {
     
@@ -28,7 +30,6 @@ router.get('/freelancers', (request, response, next) => {
 
 router.get('/freelancers/:id', function(request, response, next) {
     const id = request.params.id;
-
     FreelancerModel.findById(id, function (error, freelancer) {
         if (error) { return next(error); }
         if (freelancer == null) {
@@ -117,30 +118,11 @@ router.get('/freelancers/:id/job_posts/:id', function (request, response, next) 
             return response.status(404).json({ "message": "Freelancer not found" });
         } 
         
-const loginUser = async (request, response, next, email, password) => {
-    const user = loginUser.user_login(email, password)
-
-    if (user == "err") {
-        return next(user)
-    }
-
-    if (freelancer == "user_not_found") {
-        return response.status(404).json({ "message": "Invalid email", "logged_in": false, })
-    }
-
-    if (freelancer == "invalid_password") {
-        return response.status(401).json({ "message": "Wrong password", "logged_in": false, })
-    }
-
-    response.json({"user": user, "logged_in": true,})
-}
-
 
         JobPostModel.find(function (error, job_post) {
             if (error) { return next(error); }
             if (job_post == null) {
                 return response.status(404).json({ "message": "Job post not found" });
-                loginUser
             }
             response.json(job_post);
         });
