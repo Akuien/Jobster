@@ -18,7 +18,7 @@ router.get('/job_posts', function(req, res, next) {
         if (err) { return next(err); }
         res.json({'job_posts': job_posts });
     });
-});
+}); 
 
 
 //Get Job_post using an ID

@@ -37,7 +37,7 @@ const getOneCompany = async (request, response, next) => {
         }
 
         response.json(company)
-    })
+    }) 
 }
 
 const deleteOneCompany = async (request, response, next) => {
