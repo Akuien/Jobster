@@ -39,15 +39,15 @@ app.get('/api', function(req, res) {
 
 
 //const CompaniesRoutes = require('../server/controllers/companies');
-const freelancersRoutes = require('../server/controllers/freelancers');
-const Job_post_Routes = require('../server/controllers/job_posts');
-const resumesRoutes = require('../server/controllers/resumes');
+// const freelancersRoutes = require('../server/controllers/freelancers');
+// const Job_post_Routes = require('../server/controllers/job_posts');
+// const resumesRoutes = require('../server/controllers/resumes');
 
 
 //app.use('/api' , CompaniesRoutes);
-app.use('/api' , freelancersRoutes);
-app.use('/api' , Job_post_Routes);
-app.use('/api' , resumesRoutes);  
+// app.use('/api' , freelancersRoutes);
+// app.use('/api' , Job_post_Routes);
+// app.use('/api' , resumesRoutes);  
 
 
 // Catch all non-error handler for api (i.e., 404 Not Found)
