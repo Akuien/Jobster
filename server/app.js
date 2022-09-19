@@ -1,14 +1,17 @@
+require('dotenv').config();
 var express = require('express');
 var mongoose = require('mongoose');
 var morgan = require('morgan');
 var path = require('path');
 var cors = require('cors');
 var history = require('connect-history-api-fallback');
+var mongoString = process.env.MONGODB_URI;
+
 
 // Variables
-var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/WebDevDatabase';
+var mongoURI = process.env.MONGODB_URI || mongoString;
 var port = process.env.PORT || 3000;
-
+process.env
 // Connect to MongoDB
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true }, function(err) {
     if (err) {
@@ -45,13 +48,13 @@ const resumesRoutes = require('../server/controllers/resumes');
 
 
 //app.use('/api' , CompaniesRoutes);
-app.use('/api' , freelancersRoutes);
-app.use('/api' , Job_post_Routes);
+app.use('/api' , freelancersRoutes);  
+app.use('/api' , Job_post_Routes);  
 app.use('/api' , resumesRoutes);  
 
 
 // Catch all non-error handler for api (i.e., 404 Not Found)
-app.use('/api/*', function (req, res) {
+app.use('/api/*', function (req, res) { 
     res.status(404).json({ 'message': 'Not Found' });
 });
 
