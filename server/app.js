@@ -42,9 +42,9 @@ app.get('/api', function(req, res) {
 
 
 //const CompaniesRoutes = require('../server/controllers/companies');
-const freelancersRoutes = require('../server/controllers/freelancers');
-const Job_post_Routes = require('../server/controllers/job_posts');
-const resumesRoutes = require('../server/controllers/resumes');
+ const freelancersRoutes = require('./freelancers_controller/freelancers');
+ const Job_post_Routes = require('./companies_controller/job_posts');
+ const resumesRoutes = require('./freelancers_controller/resumes');
 
 
 //app.use('/api' , CompaniesRoutes);
