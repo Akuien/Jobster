@@ -4,7 +4,8 @@ const router = express.Router();
 const user_login = require("../logins/loginUser");
 const FreelancerModel = require('../models/freelancer');
 const JobPostModel = require('../models/job_post');
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
+
 const client = new MongoClient(process.env.MONGODB_URI);//initializing mongo client 
 const connected_client = client.connect();
 
@@ -13,13 +14,13 @@ router.post('/freelancers', async (request, response) => {
     
     try {
         const freelancer = new FreelancerModel(request.body);
-        
+
         (await connected_client)
             .db('WebDevDatabase')
             .collection('Freelancers')
             .insertOne(freelancer);
         
-        const data = await freelancer.save();
+        const data = await freelancer.save(); 
         response.status(200).json(freelancer);
     }
     catch (error) {
@@ -52,23 +53,25 @@ router.get('/freelancers', async (request, response) => {
 router.get('/freelancers/:id', async (request, response) => {
 
     const id = request.params.id;
-    
 
     if (id == null) {
-        return response.status(404).json({ "message": "Freelancer not found" });
+        return response.status(404).json({ "message": "Id does not exist" });
     }
     try {
         (await connected_client)
             .db('WebDevDatabase')
             .collection('Freelancers')
-            .findOne({ "_id": id }, function (error, freelancer) {
+            .findOne({"_id": ObjectId(id)})
+            .then(function (error, freelancer) {
                 if (error) {
                     response.send(error);
+                } else if (freelancer == null) {
+                    
+                    return response.status(404).json({ "message": "Freelancer not found" });
                 } else {
-                   
-                    response.json(freelancer);
+                   response.json(freelancer);
                 }
-            });// returns null for now
+            });
         
     }
     catch (error) {
@@ -76,25 +79,32 @@ router.get('/freelancers/:id', async (request, response) => {
     }
 });
 
-router.patch('/freelancers/:id', function (request, response, next) {
+router.patch('/freelancers/:id', async (request, response) => {
     const id = request.params.id;
-    FreelancerModel.findById(id, function (error, freelancer) {
-        if (error) { return next(error); }
-        if (freelancer == null) {
-            return response.status(404).json({ "message": "Freelancer not found" });
-        }
-        
-        
-        freelancer.first_name = (request.body.first_name || freelancer.first_name);
-        freelancer.last_name = (request.body.last_name || freelancer.last_name);
-        freelancer.email_address = (request.body.email_address || freelancer.email_address);
-        freelancer.phone_number = (request.body.phone_number || freelancer.phone_number);
-        freelancer.description = (request.body.description || freelancer.description);
-        freelancer.password = (request.body.password || freelancer.password);
+    const updateValue = request.body;
 
-        freelancer.save();
-        response.json(freelancer)
-    });
+    try {
+        (await connected_client)
+            .db('WebDevDatabase')
+            .collection('Freelancers')
+            .updateOne(
+                { "_id": ObjectId(id) },
+                { $set: updateValue}
+            )
+            .then(function (error, freelancer) {
+
+                if (error) {
+                    response.send(error);
+                } else if (freelancer == null) {
+                    
+                    return response.status(404).json({ "message": "Freelancer not found" });
+                } else {
+                    response.json(freelancer);
+                }
+            }); 
+    } catch (error) {
+        response.status(500).json({ message: error.message });
+    };
 });
 
 router.delete('/freelancers/:id', function (request, response, next) {
