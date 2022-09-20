@@ -1,5 +1,5 @@
 const express = require('express');
-require('dotenv').config(); // this imports .env file to get secret variable
+//require('dotenv').config(); // this imports .env file to get secret variable
 const router = express.Router();
 const user_login = require("../logins/loginUser");
 const FreelancerModel = require('../models/freelancer');
