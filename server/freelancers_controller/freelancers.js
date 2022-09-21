@@ -107,15 +107,30 @@ router.patch('/freelancers/:id', async (request, response) => {
     };
 });
 
-router.delete('/freelancers/:id', function (request, response, next) {
+router.delete('/freelancers/:id', async (request, response) => {
+
     const id = request.params.id;
-    FreelancerModel.findOneAndDelete({ _id: id }, function (error, freelancer) {
-        if (error) { return next(error); }
-        if (freelancer == null) {
-            return response.status(404).json({ "message": "Freelancer not found" });
-        }
-        response.json(freelancer);
-    });
+
+    try {
+        (await connected_client)
+            .db('WebDevDatabase')
+            .collection('Freelancers')
+            .deleteOne({ "_id": ObjectId(id) })
+            .then(function (error, freelancer) {
+
+                if (error) {
+                    response.send(error);
+                } else if (freelancer == null) {
+                    
+                    return response.status(404).json({ "message": "Freelancer not found" });
+                } else {
+                    response.json(freelancer);
+                }
+            });
+        
+    } catch (error) {
+        response.status(500).json({ message: error.message });
+    }
 });
 
 router.post('/freelancers/:id/job_posts', function (request, response, next) {
