@@ -41,15 +41,13 @@ app.get('/api', function(req, res) {
 }); 
 
 
-//const CompaniesRoutes = require('../server/controllers/companies');
+const CompaniesRoutes = require('../server/companies_controller/companies');
  const freelancersRoutes = require('./freelancers_controller/freelancers');
- const Job_post_Routes = require('./companies_controller/job_posts');
  const resumesRoutes = require('./freelancers_controller/resumes');
 
 
-//app.use('/api' , CompaniesRoutes);
-app.use('/api' , freelancersRoutes);  
-app.use('/api' , Job_post_Routes);  
+app.use('/api' , CompaniesRoutes);
+app.use('/api' , freelancersRoutes);    
 app.use('/api' , resumesRoutes);  
 
 
