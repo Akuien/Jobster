@@ -39,7 +39,6 @@ router.get('/freelancers', async (request, response) => {
                 if (error) {
                     response.send(error);
                 } else {
-                    // response.send(JSON.stringify(result))
                     response.json(result);
                 }
             });
