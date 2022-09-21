@@ -151,7 +151,6 @@ router.post('/freelancers/:id/job_posts', function (request, response, next) {
             response.json(job_post);
         });
     
-
     });
 });
 
