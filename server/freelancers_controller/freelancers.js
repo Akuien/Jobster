@@ -176,7 +176,7 @@ router.get('/freelancers/:id/resumes', async (request, response) => {
                 if (error) {
                     response.send(error);
                 } else {
-                    response.json(resume);
+                    response.json(resume); // does not work for now, gets the whole object of freelancer plus the resume
                 }
             });
     }
@@ -194,12 +194,12 @@ router.get('/freelancers/:id/resumes/:id', async (request, response) => {
     try {
 
         db
-            .findOne({ "_id": ObjectId(id) })
+            .findOne({ "_id": ObjectId(id)})
             .then(function (error, resume) {
                 if (error) {
                     response.send(error);
                 } else {
-                    response.json(resume);
+                    response.json(resume); // does not work for now, gets the whole object of freelancer plus the resume
                 }
             });
     }
@@ -208,6 +208,34 @@ router.get('/freelancers/:id/resumes/:id', async (request, response) => {
     }
 });
 
+
+
+
+router.delete('/freelancers/:id/resumes/:id', async (request, response) => {
+
+    const id = request.params.id;
+    const resume_id = request.params.id;
+    const db = (await connected_client).db('WebDevDatabase').collection('Freelancers');
+
+    try {
+        db
+            .deleteOne({ "_id": ObjectId(id)})
+            .then(function (error, freelancer) {
+
+                if (error) {
+                    response.send(error);
+                } else if (freelancer == null) {
+                    
+                    return response.status(404).json({ "message": "Freelancer not found" });
+                } else {
+                    response.json(freelancer);
+                }
+            });
+    
+    } catch (error) {
+        response.status(500).json({ message: error.message });
+    }
+});
 
 
 router.get('/freelancers/:id/job_posts/:id', function (request, response, next) {
