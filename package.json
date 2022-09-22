@@ -11,6 +11,7 @@
     "node": "14.x"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.1",
     "bootstrap-vue": "^2.22.0",
     "dotenv": "^16.0.2",
