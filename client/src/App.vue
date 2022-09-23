@@ -18,8 +18,6 @@
         </ul>
       </div>
     </nav>
-    <div id="nav">
-    </div>
     <!-- Render the content of the current page view -->
     <router-view/>
   </div>

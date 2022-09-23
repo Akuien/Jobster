@@ -1,9 +1,12 @@
 <template>
   <div>
-    <b-jumbotron header="DIT342 Frontend" lead="Welcome to your DIT342 Frontend Vue.js App">
-      <b-button class="btn_message" variant="primary" v-on:click="getMessage()" >Get Message from Server</b-button>
-      <p>Message from the server:<br/>
-      {{ message }}</p>
+    <b-jumbotron header="Welcome To Jobster" lead="A world leading freelancing website">
+
+      <div class="about">
+        <h3>What is Jobster?</h3>
+        <p>Jobster is a world leading website for customers to get in touch with freelancers. As a customer you can create a job posting and choose the right person to do it for you. As a freelancer you can curate what jobs will appear on your dashboard, get in touch with your customers and earn money with your talents.</p>
+        <router-link to="/register">Create your free profile right now!</router-link>
+      </div>
     </b-jumbotron>
   </div>
 </template>
@@ -34,6 +37,12 @@ export default {
 </script>
 
 <style>
+.about {
+  padding: 1em;
+  margin: auto;
+  padding: 10px;
+  width: 50%;
+}
 .btn_message {
   margin-bottom: 1em;
 }

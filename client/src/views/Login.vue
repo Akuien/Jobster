@@ -2,19 +2,38 @@
   <div class="form">
     <form action="/">
       <h1>Log in</h1>
-      <div class="form-group">
-        <input type="email" class="form-control" placeholder="E-mail">
-      </div>
+      <div id="form">
+        <div class="form-group">
+          <input type="email" class="form-control" id="email" placeholder="E-mail">
+        </div>
 
-      <div class="form-group">
-        <input type="password" class="form-control" placeholder="Password">
+        <div class="form-group">
+          <input type="password" class="form-control" id="pwd" placeholder="Password">
+        </div>
+
+        <b-button class="btn_message" variant="primary" v-on:click="getData()" >Log in</b-button>
       </div>
     </form>
   </div>
 </template>
 
+<script>
+export default {
+  name: 'login',
+
+  methods: {
+    getData() {
+      const email = document.getElementById('email').value
+      const password = document.getElementById('pwd').value
+
+      alert(email + ' ' + password)
+    }
+  }
+}
+</script>
+
 <style>
-  .form {
+  .form, #form {
     margin: auto;
     padding: 10px;
     width: 50%;

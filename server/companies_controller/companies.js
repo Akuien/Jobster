@@ -120,8 +120,26 @@ router.post('/companies/:id/job_posts', async(request, response) => {
     }
 });
 
-
-
+// Get all Job_posts from all companies
+router.get("/job_posts", async(request, response) => {
+    try {
+        (await connected_client)
+            .db('WebDevDatabase')
+            .collection('Job_post')
+            .find({})
+            .toArray(function (error, result) {
+                if (error) {
+                    response.send(error);
+                } else {
+                    
+                    response.json(result);
+                }
+            });
+    }
+    catch (error) {
+        response.status(500).json({ message: error.message });
+    }
+})
 
 
 
