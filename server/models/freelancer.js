@@ -8,6 +8,7 @@ const FreelancerSchema = new Schema({
     email_address: { type: String, required: true },
     phone_number: { type: String, required: true },
     description: { type: String, required: true },
+    resume: { type: mongoose.Schema.Types.ObjectId, ref: 'Resume', required: false},
     password: { type: String, required: true },
 });
 
@@ -44,5 +45,6 @@ FreelancerSchema
         return `/models/freelancer/${this._id}`;
     })
 
+const createModel = new mongoose.model('Freelancer', FreelancerSchema);
 
-module.exports = mongoose.model('Freelancer', FreelancerSchema);
+module.exports = createModel;
