@@ -135,6 +135,7 @@ router.get('/freelancers/:id/resumes', async (request, response) => {
 
         FreelancerModel.find({ "_id": id })
             .populate('resume')
+            .select('resume')
             .exec()
             .then(function (error, freelancer) {
                 if (error) {
@@ -190,20 +191,16 @@ router.delete('/freelancers/:id/resumes/:id', async (request, response) => {
     }
 });
 
-router.get('/freelancers?description=Eager', async (request, response) => {
+router.get('/freelancers?skills_field=JavaScript', async (request, response) => {
 
-    const id = request.params.id
-    try {
- 
-// does not work for now
+  
+    try {// does not work for now
+
         FreelancerModel
-            .find({ "description": "Eager" })
-            .exec((error, resume) => {
-                if (error) {
-                    response.send(error);
-                }
-                response.json(resume);
-            });
+            .find({"resume.skills_field": "JavaScript"})
+            .select("first_name")
+            .exec()
+        
         
     } catch (error) {
         response.status(500).json({ message: error.message });
