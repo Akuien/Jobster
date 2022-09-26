@@ -8,7 +8,8 @@ const JobPostSchema = new Schema({
     job_post_id: { type: String, required: true },
     deadline: { type: Date, required: true },
     post_date: { type: Date, required: true },
-    description: { type: String, required: true }
+    description: { type: String, required: true },
+    company: {type: Schema.Types.ObjectId, ref: 'Company'}
 });
 
 // return id
