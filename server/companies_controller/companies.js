@@ -12,7 +12,7 @@ var JobPost = require('../models/job_post');
 
 //Create company **POST
 router.post('/companies', function(req, res, next) {
-    var company = new companyModel(req.body);
+    var company = new Company(req.body);
     company.save(function(err, company) {
         if (err) {return next(err);}
         res.status(201).json(company)
@@ -22,7 +22,7 @@ router.post('/companies', function(req, res, next) {
 //Get company's profile by ID
 router.get('/companies/:id', function(req, res, next) {
     var id = req.params.id;
-    Company.findById(id, function(err, company) {
+    Company.find({"_id":id}, function(err, company) {
         if (err) { return next(err); }
         if (company === null) {
             return res.status(404).json({'message': 'Company does not exist'});
@@ -31,6 +31,8 @@ router.get('/companies/:id', function(req, res, next) {
     })
     
 })
+
+
 
 
 //Update company's details/profile **PATCH
@@ -47,7 +49,6 @@ router.patch('/companies/:id', function(req, res, next) {
         company.company_location = (req.body.company_location || company.company_location);
         company.company_email =  (req.body.company_email || company.company_email);
         company.company_phone =  (req.body.company_phone || company.company_phone);
-        company.company_id =  (req.body.company_id || company.company_id);
         company.password = (req.body.password || company.password);
         company.job_posts =  (req.body.job_posts || company.job_posts);
 

@@ -5,7 +5,6 @@ const Schema = mongoose.Schema;
 
 const JobPostSchema = new Schema({
 
-    job_post_id: { type: String, required: true },
     deadline: { type: Date, required: true },
     post_date: { type: Date, required: true },
     description: { type: String, required: true },
@@ -17,7 +16,7 @@ const JobPostSchema = new Schema({
 JobPostSchema
     .virtual('id')
     .get(function () {
-        return job_post_id;
+        return id;
     });
 
 // return deadline
