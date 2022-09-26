@@ -14,7 +14,6 @@ const CompanySchema = new Schema({
     company_location: {type: company_locationSchema},
     company_email: { type: String, required: true },
     company_phone: {type: String, required: true },
-    company_id: { type: String, required: true },
     password: {type: String, required: true},
     job_posts: {type: Schema.Types.ObjectId, ref: 'Job_posts'}
 });
@@ -31,9 +30,9 @@ CompanySchema
 // getting company id
 
 CompanySchema
-    .virtual("Company_id")
+    .virtual("id")
     .get(function() {
-        return company_id;
+        return id;
     });
 
 // getting company description

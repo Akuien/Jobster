@@ -80,7 +80,6 @@ router.put('/job_posts/:id', function(req, res) {
         if (job_post === null) {
             return res.status(404).json({'message': 'job_post not found'});
         }
-        job_post.job_post_id = req.body.job_post_id;
         job_post.deadline = req.body.deadline;
         job_post.post_date = req.body.post_date;
         job_post.description = req.body.description;
@@ -99,7 +98,6 @@ router.patch('/job_posts/:id', function(req, res) {
         if (job_post === null) {
             return res.status(404).json({'message': 'job_post not found'});
         }
-        job_post.job_post_id = req.body.job_post_id || job_post.job_post_id;
         job_post.deadline = req.body.deadline || job_post.deadline;
         job_post.post_date = req.body.post_date || job_post.post_date;
         job_post.description = req.body.description || job_post.description;
