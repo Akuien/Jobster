@@ -1,19 +1,22 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const CompanySchema = new Schema({
-    company_name: { type: String, required: true },
-    company_description: { type: String, required: true },
-    company_location: {
+
+var company_locationSchema = new Schema({
         city: { type: String, required: true },
         country: { type: String, required: true },
         address: { type: String, required: true },
-    },
+});
 
+const CompanySchema = new Schema({
+    company_name: { type: String, required: true },
+    company_description: { type: String, required: true },
+    company_location: {type: company_locationSchema},
     company_email: { type: String, required: true },
     company_phone: {type: String, required: true },
     company_id: { type: String, required: true },
-    password: {type: String, required: true}
+    password: {type: String, required: true},
+    job_posts: {type: Schema.Types.ObjectId, ref: 'Job_posts'}
 });
 
 // getting company name

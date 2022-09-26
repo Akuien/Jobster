@@ -5,11 +5,11 @@ var morgan = require('morgan');
 var path = require('path');
 var cors = require('cors');
 var history = require('connect-history-api-fallback');
-var mongoString = process.env.MONGODB_URI;
+var bodyParser = require('body-parser');
 
 
 // Variables
-var mongoURI = process.env.MONGODB_URI || mongoString;
+var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/webDevDatabase';
 var port = process.env.PORT || 3000;
 process.env
 // Connect to MongoDB
@@ -29,6 +29,10 @@ var app = express();
 // Parse requests of content-type 'application/json'
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// Parse requests of content-type 'application/json'
+app.use(bodyParser.json());
+
 // HTTP request logger
 app.use(morgan('dev'));
 // Enable cross-origin resource sharing for frontend must be registered before api
@@ -41,12 +45,14 @@ app.get('/api', function(req, res) {
 }); 
 
 
-const CompaniesRoutes = require('../server/companies_controller/companies');
+const companiesRoutes = require('../server/companies_controller/companies');
+const jobPostRoutes = require('./companies_controller/job_posts')
  const freelancersRoutes = require('./freelancers_controller/freelancers');
  const resumesRoutes = require('./freelancers_controller/resumes');
 
 
-app.use('/api' , CompaniesRoutes);
+app.use('/api' , companiesRoutes);
+app.use('/api', jobPostRoutes)
 app.use('/api' , freelancersRoutes);    
 app.use('/api' , resumesRoutes);  
 
