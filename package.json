@@ -11,8 +11,12 @@
     "node": "14.x"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.6",
+    "bootstrap": "^5.2.1",
+    "bootstrap-vue": "^2.22.0",
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
-    "mongoose": "^6.5.5"
+    "mongoose": "^6.5.5",
+    "vue": "^3.2.39"
   }
 }

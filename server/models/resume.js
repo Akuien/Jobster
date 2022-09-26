@@ -6,10 +6,8 @@ const ResumeSchema = new Schema({
     education_field: { type: String, required: true },
     experience_field: { type: String, required: true },
     skills_field: { type: String, required: true },
-    contact_info: { 
-        email: { type: String, required: true },
-        phone_number: {type: String, required: true}
-     }
+    freelancer: { type: mongoose.Schema.Types.ObjectId, ref: 'Freelancer', required: true},
+    
 });
 
 // Returning education
