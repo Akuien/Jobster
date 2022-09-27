@@ -4,8 +4,11 @@
       <div class="container-fluid">
         <router-link to="/" class="navbar-brand">Jobster</router-link>
         <ul class="navbar-nav">
-          <li class="nav-item" style="float: left">
+          <li class="nav-item" >
             <router-link class="nav-link" to="/jobs">Jobs</router-link>
+          </li>
+          <li class="nav-item" >
+            <router-link class="nav-link" to="/freelancers">Freelancers</router-link>
           </li>
         </ul>
         <ul class="navbar-nav">
