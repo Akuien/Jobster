@@ -20,7 +20,7 @@ router.post('/job_posts', function(req, res, next){
 //Get job post by id
 router.get('/api/job_posts/:id', function(req, res, next) {
     var id = req.params.id;
-    Job_post.findById(id, function(err, job_post) {
+    JobPost.findById(id, function(err, job_post) {
         if (err) { return next(err); }
         if (job_post === null) {
             return res.status(404).json({'message': 'Job_post not found!'});
@@ -30,8 +30,37 @@ router.get('/api/job_posts/:id', function(req, res, next) {
 });
 
 
+//Get job posts sorted by post dates
+router.get('/job_posts/sort', function (req, res, next) {
+
+    JobPost.find().sort({
+        post_date: req.query.sortByPost_date
+    }).exec(function (err, results) {
+        if (err) { return next(err); }
+        if (!results) { return res.status(404).json({'message': 'no events found'}); }
+        res.status(200).json(results);
+    })
+});
+
+//Get all job posts filter by job title
+router.get('/job_posts/filtered', function(req, res, next) {   
+    if (!req.query.job_title){return next();}
+    JobPost.find({
+        job_title: { $regex: req.query.job_title, $options: 'i' }
+    },
+        function(err, job_posts) {
+            if (err) { return next(err); }
+            if (!job_posts) { return res.status(404).json(
+                {'message': 'no job post found'});
+            }
+        res.status(200).json(job_posts);
+    });
+});
+
+
+
 //Get all job posts and pagination
-router.get('/job_posts', function(req, res, next) {     
+router.get('/job_posts/pages', function(req, res, next) {     
     JobPost.find(function(err, job_posts) {         
         if (err) { return next(err); }   
 
@@ -80,6 +109,7 @@ router.put('/job_posts/:id', function(req, res) {
         if (job_post === null) {
             return res.status(404).json({'message': 'job_post not found'});
         }
+        job_post.job_title = req.body.job_title;
         job_post.deadline = req.body.deadline;
         job_post.post_date = req.body.post_date;
         job_post.description = req.body.description;
@@ -98,6 +128,7 @@ router.patch('/job_posts/:id', function(req, res) {
         if (job_post === null) {
             return res.status(404).json({'message': 'job_post not found'});
         }
+        job_post.job_title = req.body.job_title || job_post.job_title;
         job_post.deadline = req.body.deadline || job_post.deadline;
         job_post.post_date = req.body.post_date || job_post.post_date;
         job_post.description = req.body.description || job_post.description;
