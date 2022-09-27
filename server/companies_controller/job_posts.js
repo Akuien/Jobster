@@ -42,7 +42,7 @@ router.get('/job_posts/sort', function (req, res, next) {
     })
 });
 
-//Get all job posts filter by job title
+//Get all job posts filtered by job title
 router.get('/job_posts/filtered', function(req, res, next) {   
     if (!req.query.job_title){return next();}
     JobPost.find({
