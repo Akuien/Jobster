@@ -4,13 +4,14 @@
             <b-card style="max-width: 20rem; background-color: lightgrey; padding: 30px; margin-top: 20px; margin-left: 20px;">
                 <h2>{{freelancer.first_name}}</h2>
                 <p>{{freelancer.description}}</p>
+                <b-button style="background-color: grey;"><a style="color: white;" :href="'/freelancers/' + freelancer._id">Read more</a></b-button>
             </b-card>
         </div>
     </div>
 </template>
 
 <script>
-import freelancerOps from '../FreelancersOps'
+import FreelancersOps from '../FreelancersOps'
 
 export default {
   name: 'freelancers',
@@ -24,7 +25,7 @@ export default {
   },
   methods: {
     getAllFreelancers() {
-      freelancerOps.getFreelancers()
+      FreelancersOps.getFreelancers()
         .then(response => {
           this.freelancers = response.data
         })
