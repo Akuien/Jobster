@@ -5,7 +5,7 @@ import Login from './views/Login.vue'
 import Register from './views/Register.vue'
 import Jobs from './views/Jobs.vue'
 import Freelancers from './views/Freelancers.vue'
-import About from './views/About.vue'
+import Freelancer from './views/Freelancer.vue'
 
 Vue.use(Router)
 
@@ -42,10 +42,11 @@ export default new Router({
       name: 'freelancers',
       component: Freelancers
     },
+
     {
-      path: '/About',
-      name: 'About',
-      component: About
+      path: '/freelancers/:id',
+      name: 'freelancer',
+      component: Freelancer
     }
   ]
 })

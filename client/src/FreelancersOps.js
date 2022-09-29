@@ -5,8 +5,8 @@ class FreelancersOps {
     return Api.get('/freelancers')
   }
 
-  getOneFreelancer() {
-    return Api.get('/freelancers/:id')
+  getOneFreelancer(id) {
+    return Api.get('/freelancers/' + id)
   }
 }
 
