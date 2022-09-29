@@ -8,6 +8,21 @@ var JobPost = require('../models/job_post');
 
 //require('dotenv').config(); // this imports .env file to get secret variable
 
+router.get('/companies', function (request, response) {
+
+    try {
+
+        Company.find({}, function (error, companies) {
+            if (error) {
+                response.send(error)
+            }
+            response.send(companies)
+        });
+    }
+    catch (error) {
+        response.status(500).json({ message: error.message });
+    }
+});
 
 
 //Create company **POST

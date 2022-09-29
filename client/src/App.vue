@@ -10,6 +10,9 @@
           <li class="nav-item" >
             <router-link class="nav-link" to="/freelancers">Freelancers</router-link>
           </li>
+          <li class="nav-item" >
+            <router-link class="nav-link" to="/companies">Companies</router-link>
+          </li>
            <li class="nav-item" >
             <router-link class="nav-link" to="/About">About</router-link>
           </li>

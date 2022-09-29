@@ -4,9 +4,10 @@ import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import Register from './views/Register.vue'
 import Jobs from './views/Jobs.vue'
-import Freelancers from './views/Freelancers.vue'
-import Freelancer from './views/Freelancer.vue'
-import About from './views/About.vue'
+import Freelancers from './freelancers_views/Freelancers.vue'
+import Freelancer from './freelancers_views/Freelancer.vue'
+import Companies from './companies_views/Companies.vue'
+import Company from './companies_views/Company.vue'
 
 Vue.use(Router)
 
@@ -51,9 +52,15 @@ export default new Router({
     },
 
     {
-      path: '/About',
-      name: 'About',
-      component: About
+      path: '/companies',
+      name: 'companies',
+      component: Companies
+    },
+
+    {
+      path: '/companies/:id',
+      name: 'company',
+      component: Company
     }
   ]
 })
