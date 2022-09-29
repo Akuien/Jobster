@@ -22,6 +22,7 @@ router.post('/freelancers', async (request, response) => {
             password: request.body.password
         })
         const createdFreelancer = await freelancer.save();
+        
         response.json(createdFreelancer);
     }
     catch (error) {
@@ -101,6 +102,7 @@ router.delete('/freelancers/:id', async (request, response) => {
 
 router.post('/freelancers/:id/resumes', async (request, response) => {
     const id = request.params.id;
+    const resume = request.body.resume;
 
 
     try {
@@ -113,12 +115,16 @@ router.post('/freelancers/:id/resumes', async (request, response) => {
             freelancer: id
         })
 
-        FreelancerModel.findByIdAndUpdate({ "_id": id }, { $set: { "resume": createResume } }, function (error, resume) {
+        const createdResume = await createResume.save();
+
+        
+        FreelancerModel.findByIdAndUpdate({ "_id": id }, { $push: { resume: createdResume } }, { safe: true, upsert: true }, function (error, resume) {
             if (error) {
                 response.send(error);
+            } else {
+                response.json(resume);
             }
-            response.json(resume);
-        })
+        });
             
     } catch (error) {
 
@@ -133,17 +139,13 @@ router.get('/freelancers/:id/resumes', async (request, response) => {
 
     try {
 
-        FreelancerModel.find({ "_id": id })
-            .populate('resume')
-            .select('resume')
-            .exec()
-            .then(function (error, freelancer) {
+            ResumeModel.find({ "freelancer": id}, function (error, resumes) {
                 if (error) {
                     response.send(error);
                 } else {
-                    response.json(freelancer);
+                    response.json(resumes);
                 }
-            });
+            })
     }
     catch (error) {
         response.status(500).json({ message: error.message });
