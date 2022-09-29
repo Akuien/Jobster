@@ -1,7 +1,7 @@
 <template>
     <b-row>
         <div v-for="freelancer in freelancers" v-bind:key="freelancer._id">
-            <b-card style="height: 20rem;width: 20rem; background-color: lightgrey; padding: 80px; margin-top: 20px; margin-left: 50px; margin-bottom: 20px">
+            <b-card style="height: 20rem;width: 20rem; background-color: lightgrey; padding: 80px; margin-top: 20px; margin-left: 50px; margin-bottom: 20px;">
                 <h2>{{freelancer.first_name}}</h2>
                 <p>{{freelancer.description}}</p>
                 <b-button style="background-color: grey;" :href="'/freelancers/' + freelancer._id">Read more</b-button>
