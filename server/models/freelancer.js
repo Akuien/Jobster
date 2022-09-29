@@ -8,7 +8,7 @@ const FreelancerSchema = new Schema({
     email_address: { type: String, required: true },
     phone_number: { type: String, required: true },
     description: { type: String, required: true },
-    resume: { type: mongoose.Schema.Types.ObjectId, ref: 'Resume', required: false},
+    resume: [{ type: Array, ref: 'Resume', required: false }],
     password: { type: String, required: true },
 });
 
