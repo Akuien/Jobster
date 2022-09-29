@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import FreelancersOps from '../FreelancersOps'
+import FreelancersOps from './FreelancersOps'
 
 export default {
   name: 'freelancer',
