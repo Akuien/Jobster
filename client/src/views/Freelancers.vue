@@ -1,13 +1,13 @@
 <template>
-    <div>
+    <b-row>
         <div v-for="freelancer in freelancers" v-bind:key="freelancer._id">
-            <b-card style="max-width: 20rem; background-color: lightgrey; padding: 30px; margin-top: 20px; margin-left: 20px;">
+            <b-card v-flex auto class="px-10" style="height: 20rem;width: 20rem; background-color: lightgrey; padding: 80px; margin-top: 20px; margin-left: 50px; margin-bottom: 20px">
                 <h2>{{freelancer.first_name}}</h2>
                 <p>{{freelancer.description}}</p>
-                <b-button style="background-color: grey;"><a style="color: white;" :href="'/freelancers/' + freelancer._id">Read more</a></b-button>
+                <b-button style="background-color: grey;" :href="'/freelancers/' + freelancer._id">Read more</b-button>
             </b-card>
         </div>
-    </div>
+    </b-row>
 </template>
 
 <script>
