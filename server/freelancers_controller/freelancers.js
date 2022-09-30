@@ -1,50 +1,45 @@
 const express = require('express');
-//require('dotenv').config(); // this imports .env file to get secret variable
 const router = express.Router();
 const user_login = require("../logins/loginUser");
 const FreelancerModel = require('../models/freelancer');
 const ResumeModel = require('../models/resume');
 const JobPostModel = require('../models/job_post');
-const { MongoClient, ObjectId } = require('mongodb');
+const { ObjectId } = require('mongodb');
 
-
-const client = new MongoClient(process.env.MONGODB_URI);//initializing mongo client 
-const connected_client = client.connect();
 
 
 router.post('/freelancers', async (request, response) => {
     
     try {
-        const freelancer = new FreelancerModel(request.body);
 
-        (await connected_client)
-            .db('WebDevDatabase')
-            .collection('Freelancers')
-            .insertOne(freelancer);
+        const freelancer = new FreelancerModel({
+
+            first_name: request.body.first_name,
+            last_name: request.body.last_name,
+            email_address: request.body.email_address,
+            phone_number: request.body.phone_number,
+            description: request.body.description,
+            password: request.body.password
+        })
+        const createdFreelancer = await freelancer.save();
         
-        const data = await freelancer.save(); 
-        response.status(200).json(freelancer);
+        response.json(createdFreelancer);
     }
     catch (error) {
         response.status(400).json({ message: error.message });
     }
 });
 
-router.get('/freelancers', async (request, response) => {
+router.get('/freelancers', function (request, response) {
 
     try {
-        (await connected_client)
-            .db('WebDevDatabase')
-            .collection('Freelancers')
-            .find({})
-            .toArray(function (error, result) {
-                if (error) {
-                    response.send(error);
-                } else {
-                    // response.send(JSON.stringify(result))
-                    response.json(result);
-                }
-            });
+
+        FreelancerModel.find({}, function (error, freelancers) {
+            if (error) {
+                response.send(error)
+            }
+            response.send(freelancers)
+        });
     }
     catch (error) {
         response.status(500).json({ message: error.message });
@@ -52,7 +47,7 @@ router.get('/freelancers', async (request, response) => {
 });
 
 
-router.get('/freelancers/:id', async (request, response) => {
+router.get('/freelancers/:id', function (request, response) {
 
     const id = request.params.id;
 
@@ -60,21 +55,14 @@ router.get('/freelancers/:id', async (request, response) => {
         return response.status(404).json({ "message": "Id does not exist" });
     }
     try {
-        (await connected_client)
-            .db('WebDevDatabase')
-            .collection('Freelancers')
-            .findOne({"_id": ObjectId(id)})
-            .then(function (error, freelancer) {
-                if (error) {
-                    response.send(error);
-                } else if (freelancer == null) {
-                    
-                    return response.status(404).json({ "message": "Freelancer not found" });
-                } else {
-                   response.json(freelancer);
-                }
-            });
-        
+
+        FreelancerModel.find({"_id": id}, function (error, freelancer) {
+            if (error) {
+                response.send(error)
+            }
+            response.send(freelancer)
+        });
+  
     }
     catch (error) {
         response.status(500).json({ message: error.message });
@@ -82,31 +70,20 @@ router.get('/freelancers/:id', async (request, response) => {
 });
 
 router.patch('/freelancers/:id', async (request, response) => {
+
     const id = request.params.id;
-    const updateValue = request.body;
+    const body = request.body;
 
     try {
-        (await connected_client)
-            .db('WebDevDatabase')
-            .collection('Freelancers')
-            .updateOne(
-                { "_id": ObjectId(id) },
-                { $set: updateValue}
-            )
-            .then(function (error, freelancer) {
 
-                if (error) {
-                    response.send(error);
-                } else if (freelancer == null) {
-                    
-                    return response.status(404).json({ "message": "Freelancer not found" });
-                } else {
-                    response.json(freelancer);
-                }
-            }); 
-    } catch (error) {
-        response.status(500).json({ message: error.message });
-    };
+        const updateFreelancer = await FreelancerModel.findByIdAndUpdate(id, body, {
+            runValidators: true
+        });
+    
+        response.json(updateFreelancer);
+     } catch (error) {
+         response.status(500).json({ message: error.message });
+     };
 });
 
 router.delete('/freelancers/:id', async (request, response) => {
@@ -114,21 +91,9 @@ router.delete('/freelancers/:id', async (request, response) => {
     const id = request.params.id;
 
     try {
-        (await connected_client)
-            .db('WebDevDatabase')
-            .collection('Freelancers')
-            .deleteOne({ "_id": ObjectId(id) })
-            .then(function (error, freelancer) {
 
-                if (error) {
-                    response.send(error);
-                } else if (freelancer == null) {
-                    
-                    return response.status(404).json({ "message": "Freelancer not found" });
-                } else {
-                    response.json(freelancer);
-                }
-            });
+        const deletedFreelancer = await FreelancerModel.findByIdAndRemove(id).exec();
+        response.send(deletedFreelancer);
     
     } catch (error) {
         response.status(500).json({ message: error.message });
@@ -137,25 +102,30 @@ router.delete('/freelancers/:id', async (request, response) => {
 
 router.post('/freelancers/:id/resumes', async (request, response) => {
     const id = request.params.id;
-    const db = (await connected_client).db('WebDevDatabase').collection('Freelancers');
+    const resume = request.body.resume;
+
 
     try {
 
-        const resume = new ResumeModel(request.body);
+        const createResume = await ResumeModel.create({
+            
+            education_field: request.body.education_field,
+            experience_field: request.body.experience_field,
+            skills_field: request.body.skills_field,
+            freelancer: id
+        })
 
-        db
-            .update({ "_id": ObjectId(id) }, {$set: {"resume": resume}})
-            .then(function (error, resume) {
+        const createdResume = await createResume.save();
 
-                if (error) {
-                    response.send(error);
-                } else {
-                    response.json(resume);
-                }
-            });
         
-            response.json(resume);
-        
+        FreelancerModel.findByIdAndUpdate({ "_id": id }, { $push: { resume: createdResume } }, { safe: true, upsert: true }, function (error, resume) {
+            if (error) {
+                response.send(error);
+            } else {
+                response.json(resume);
+            }
+        });
+            
     } catch (error) {
 
         response.status(500).json({ message: error.message });
@@ -166,19 +136,16 @@ router.post('/freelancers/:id/resumes', async (request, response) => {
 router.get('/freelancers/:id/resumes', async (request, response) => {
 
     const id = request.params.id;
-    const db = (await connected_client).db('WebDevDatabase').collection('Freelancers');
 
     try {
 
-        db
-            .find({"_id": ObjectId(id)}, {resume: 1})
-            .toArray(function (error, resume) {
+            ResumeModel.find({ "freelancer": id}, function (error, resumes) {
                 if (error) {
                     response.send(error);
                 } else {
-                    response.json(resume); // does not work for now, gets the whole object of freelancer plus the resume
+                    response.json(resumes);
                 }
-            });
+            })
     }
     catch (error) {
         response.status(500).json({ message: error.message });
@@ -189,19 +156,16 @@ router.get('/freelancers/:id/resumes', async (request, response) => {
 router.get('/freelancers/:id/resumes/:id', async (request, response) => {
 
     const id = request.params.id;
-    const db = (await connected_client).db('WebDevDatabase').collection('Freelancers');
 
     try {
 
-        db
-            .findOne({ "_id": ObjectId(id)})
-            .then(function (error, resume) {
+        ResumeModel
+            .findOne({ "_id": id }, function (error, resume) {
                 if (error) {
                     response.send(error);
-                } else {
-                    response.json(resume); // does not work for now, gets the whole object of freelancer plus the resume
                 }
-            });
+                response.json(resume);
+            })
     }
     catch (error) {
         response.status(500).json({ message: error.message });
@@ -209,27 +173,19 @@ router.get('/freelancers/:id/resumes/:id', async (request, response) => {
 });
 
 
-
-
 router.delete('/freelancers/:id/resumes/:id', async (request, response) => {
 
     const id = request.params.id;
-    const resume_id = request.params.id;
-    const db = (await connected_client).db('WebDevDatabase').collection('Freelancers');
-
+  
     try {
-        db
-            .deleteOne({ "_id": ObjectId(id)})
-            .then(function (error, freelancer) {
 
+        ResumeModel
+            .findByIdAndRemove({ "_id": id })
+            .then(function (error, delResume) {
                 if (error) {
                     response.send(error);
-                } else if (freelancer == null) {
-                    
-                    return response.status(404).json({ "message": "Freelancer not found" });
-                } else {
-                    response.json(freelancer);
                 }
+                response.json(delResume);
             });
     
     } catch (error) {
@@ -237,6 +193,23 @@ router.delete('/freelancers/:id/resumes/:id', async (request, response) => {
     }
 });
 
+router.get('/freelancers?skills_field=JavaScript', async (request, response) => {
+
+  
+    try {// does not work for now
+
+        FreelancerModel
+            .find({"resume.skills_field": "JavaScript"})
+            .select("first_name")
+            .exec()
+        
+        
+    } catch (error) {
+        response.status(500).json({ message: error.message });
+    }
+
+
+});
 
 router.get('/freelancers/:id/job_posts/:id', function (request, response, next) {
     const id = request.params.id;

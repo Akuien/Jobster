@@ -5,18 +5,27 @@ const Schema = mongoose.Schema;
 
 const JobPostSchema = new Schema({
 
-    job_post_id: { type: String, required: true },
+    job_title: {type: String, required: true},
     deadline: { type: Date, required: true },
     post_date: { type: Date, required: true },
-    description: { type: String, required: true }
+    description: { type: String, required: true },
+    company: {type: Schema.Types.ObjectId, ref: 'Company'}
 });
 
-// return id
 
+// return title
+JobPostSchema
+    .virtual('JobTitle')
+    .get(function () {
+        return job_Title;
+    });
+
+
+// return id
 JobPostSchema
     .virtual('id')
     .get(function () {
-        return job_post_id;
+        return id;
     });
 
 // return deadline
