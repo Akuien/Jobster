@@ -1,8 +1,8 @@
 <template>
     <div>
-        <div v-for="attribute in company" v-bind:key="attribute._id">
-          <h1>{{attribute.company_name}}</h1>
-          <h2>{{attribute.company_email}}</h2>
+        <div v-for="job in jobs" v-bind:key="job._id">
+          <h1>{{job.company_name}}</h1>
+          <h2>{{job.description}}</h2>
           <b-button style="background-color: grey;" :href="'/companies/' + company._id + '/job_posts'">Check out jobs</b-button>
         </div>
     </div>
@@ -12,17 +12,17 @@
 import CompaniesOps from './CompaniesOps'
 
 export default {
-  name: 'company',
+  name: 'jobs',
   data() {
     return {
-      company: null
+      jobs: null
     }
   },
   methods: {
-    getCompany(id) {
-      CompaniesOps.getOneCompany(id)
+    getJobs(id) {
+      CompaniesOps.getAllJobs(id)
         .then(response => {
-          this.company = response.data
+          this.jobs = response.data
         })
         .catch(error => {
           console.log(error)
@@ -30,7 +30,7 @@ export default {
     }
   },
   mounted() {
-    this.getCompany(this.$route.params.id)
+    this.getJobs(this.$route.params.id)
   }
 }
 </script>
