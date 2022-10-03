@@ -32,12 +32,14 @@ app.use(express.json());
 
 // Parse requests of content-type 'application/json'
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // HTTP request logger
 app.use(morgan('dev'));
 // Enable cross-origin resource sharing for frontend must be registered before api
 app.options('*', cors());
 app.use(cors());
+
 
 // Import routes
 app.get('/api', function(req, res) {
@@ -47,10 +49,11 @@ app.get('/api', function(req, res) {
 
 const companiesRoutes = require('../server/companies_controller/companies');
 const jobPostRoutes = require('./companies_controller/job_posts')
- const freelancersRoutes = require('./freelancers_controller/freelancers');
- const resumesRoutes = require('./freelancers_controller/resumes');
+const freelancersRoutes = require('./freelancers_controller/freelancers');
+const resumesRoutes = require('./freelancers_controller/resumes');
+const authRoutes = require('../server/authRoutes/authRoutes')
 
-
+app.use('/api', authRoutes);
 app.use('/api' , companiesRoutes);
 app.use('/api', jobPostRoutes)
 app.use('/api' , freelancersRoutes);    
