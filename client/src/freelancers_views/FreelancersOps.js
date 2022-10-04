@@ -19,6 +19,10 @@ class FreelancersOps {
       password: form.password
     })
   }
+
+  deleteFreelancer(id) {
+    return Api.delete('/freelancers/' + id)
+  }
 }
 
 export default new FreelancersOps()
