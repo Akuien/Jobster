@@ -1,42 +1,1028 @@
 {
 	"info": {
-		"_postman_id": "f7ee95b5-9cb9-442f-a6a9-42de46138872",
+		"_postman_id": "b4e5a6c6-48d9-4506-88cd-d8f03df8fdc1",
 		"name": "server",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23506077"
 	},
 	"item": [
 		{
-			"name": "GET /api",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "b58d92ec-5214-450c-adb0-28e068aa71b9",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
+			"name": "Create a freelancer",
 			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n        {\r\n            \"first_name\": \"John\",\r\n            \"last_name\": \"Lennon\",\r\n            \"email_address\": \"johnlennon@gmail.com\",\r\n            \"phone_number\": \"+4443434242\",\r\n            \"description\": \"dsfslfslfdsdpflspldfsldfl\",\r\n            \"password\": \"5435j345jjj45\"\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
 					}
-				],
+				},
 				"url": {
-					"raw": "{{host}}/api",
+					"raw": "http://localhost:3000/api/freelancers",
+					"protocol": "http",
 					"host": [
-						"{{host}}"
+						"localhost"
 					],
+					"port": "3000",
 					"path": [
-						"api"
+						"api",
+						"freelancers"
 					]
 				}
+			},
+			"response": [
+				{
+					"name": "Create a freelancer",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n        {\r\n            \"first_name\": \"John\",\r\n            \"last_name\": \"Lennon\",\r\n            \"email_address\": \"johnlennon@gmail.com\",\r\n            \"phone_number\": \"+4443434242\",\r\n            \"description\": \"dsfslfslfdsdpflspldfsldfl\",\r\n            \"password\": \"5435j345jjj45\"\r\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/freelancers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"freelancers"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "220"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"dc-FAFh9HbGaobJfRx5i3J6guGEhL4\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 13 Sep 2022 21:41:43 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"6320f9163ec3532c8075227e\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Lennon\",\n    \"email_address\": \"johnlennon@gmail.com\",\n    \"phone_number\": \"+4443434242\",\n    \"description\": \"dsfslfslfdsdpflspldfsldfl\",\n    \"password\": \"5435j345jjj45\",\n    \"__v\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "Get A freelancer by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/freelancers/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"freelancers",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "6320f263c2a8283714c69963"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get A freelancer by id",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/freelancers/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"freelancers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6320f263c2a8283714c69963"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "215"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"d7-1Oq0QhPwBuPKUN8AkbRMaEKEBH8\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 13 Sep 2022 23:12:25 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"6320f263c2a8283714c69963\",\n    \"first_name\": \"Andy\",\n    \"last_name\": \"Joseph\",\n    \"email_address\": \"andyjoseph@gmail.com\",\n    \"phone_number\": \"4324141234\",\n    \"id\": \"4234234234\",\n    \"description\": \"dfadfasdf\",\n    \"password\": \"333jj3j\",\n    \"__v\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "Get All Freelancers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/freelancers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"freelancers"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/freelancers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"freelancers"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "442"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1ba-GVH+TY/jJeZUa5Q+B/s1oJr6CV4\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 13 Sep 2022 21:36:28 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"freelancers\": [\n        {\n            \"_id\": \"6320f263c2a8283714c69963\",\n            \"first_name\": \"Andy\",\n            \"last_name\": \"Joseph\",\n            \"email_address\": \"andyjoseph@gmail.com\",\n            \"phone_number\": \"4324141234\",\n            \"id\": \"4234234234\",\n            \"description\": \"dfadfasdf\",\n            \"password\": \"333jj3j\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6320f2b2c2a8283714c69966\",\n            \"first_name\": \"Yoko\",\n            \"last_name\": \"Ono\",\n            \"email_address\": \"yokoono@gmail.com\",\n            \"phone_number\": \"4453534\",\n            \"id\": \"2342342rr\",\n            \"description\": \"elrwlrwlelw;lr\",\n            \"password\": \"rerr4\",\n            \"__v\": 0\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Patch one freelancer by id",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"last_name\": \"Deng\"\r\n    }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/freelancers/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"freelancers",
+						":id"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "6328817e40f0a05ab0183f94"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "patch one freelancer",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"Paul\",\r\n    \"last_name\": \"McCartney\",\r\n    \"email_address\": \"macca@gmail.com\",\r\n    \"phone_number\": \"4324141234\",\r\n    \"id\": \"4234234234\",\r\n    \"description\": \"dfadfasdf\",\r\n    \"password\": \"333jj3j\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/freelancers/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"freelancers",
+								":id"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6320f263c2a8283714c69963"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "213"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"d5-5ctfPOZuZRztP6zaGY7coVL4hRU\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 14 Sep 2022 09:34:20 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"6320f263c2a8283714c69963\",\n    \"first_name\": \"Paul\",\n    \"last_name\": \"McCartney\",\n    \"email_address\": \"macca@gmail.com\",\n    \"phone_number\": \"4324141234\",\n    \"id\": \"4234234234\",\n    \"description\": \"dfadfasdf\",\n    \"password\": \"333jj3j\",\n    \"__v\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "Create a resume based on freelancer id",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "example response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"deadline\": \"2022-02-12\",\r\n   \"post_date\": \"2021-01-01\",\r\n   \"description\": \"Looking for a job\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/freelancers/:id/job_posts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"freelancers",
+								":id",
+								"job_posts"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6320f263c2a8283714c69963"
+								}
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "153"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"99-4M9F7wU2nqQNv+i1+7GTCSw597w\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 14 Sep 2022 10:43:04 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"6321b038621f332b084e0b90\",\n    \"deadline\": \"2022-02-12T00:00:00.000Z\",\n    \"post_date\": \"2021-01-01T00:00:00.000Z\",\n    \"description\": \"Looking for a job\",\n    \"__v\": 0\n}"
+				},
+				{
+					"name": "Post resume for freelancer",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"education_field\": \"Gothenburg Uni\",\r\n    \"experience_field\": \"Internship\",\r\n    \"skills_field\": \"Java, JavaScript\",\r\n    \"contact_info\": { \r\n        \"email\": \"greg@gmail\",\r\n        \"phone_number\": \"+2424235252\"\r\n     }\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/freelancers/:id/resumes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"freelancers",
+								":id",
+								"resumes"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "632730b47af1f472c4ab5019"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "202"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"ca-GPgq7lcaN408rLSZvksgFjJIwrM\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 21 Sep 2022 18:17:12 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"632b552818fe8a2f285a0ad9\",\n    \"education_field\": \"Gothenburg Uni\",\n    \"experience_field\": \"Internship\",\n    \"skills_field\": \"Java, JavaScript\",\n    \"contact_info\": {\n        \"email\": \"greg@gmail\",\n        \"phone_number\": \"+2424235252\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get all resumes by freelancer id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/freelancers/resumes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"freelancers",
+						"resumes"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "job post example",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/freelancers/:id/job_posts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"freelancers",
+								":id",
+								"job_posts"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6320f263c2a8283714c69963"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "169"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a9-KpjCZ1qAO1PPNpgJDbd/mV5qjXg\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 14 Sep 2022 10:58:35 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"job_posts\": [\n        {\n            \"_id\": \"6321b038621f332b084e0b90\",\n            \"deadline\": \"2022-02-12T00:00:00.000Z\",\n            \"post_date\": \"2021-01-01T00:00:00.000Z\",\n            \"description\": \"Looking for a job\",\n            \"__v\": 0\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Get a resume by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "file",
+					"file": {}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/freelancers/:id/resumes/:id?id=632dd200f1b1c14540b0363b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"freelancers",
+						":id",
+						"resumes",
+						":id"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "632dd200f1b1c14540b0363b"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "632730c87af1f472c4ab501b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete resume by freelancer id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api//freelancers/:id/resumes/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"",
+						"freelancers",
+						":id",
+						"resumes",
+						":id"
+					],
+					"query": [
+						{
+							"key": "_id",
+							"value": "632b552818fe8a2f285a0ad9",
+							"disabled": true
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "632b552818fe8a2f285a0ad9",
+							"type": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete one freelancer by id",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "example response",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/freelancers/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"freelancers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6320f8ec1d67722d287aa864"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "220"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"dc-4SiaFW8Eti1UV8IW8lKZ6n+AxUQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 14 Sep 2022 09:44:19 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"6320f8ec1d67722d287aa864\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Lennon\",\n    \"email_address\": \"johnlennon@gmail.com\",\n    \"phone_number\": \"+4443434242\",\n    \"description\": \"dsfslfslfdsdpflspldfsldfl\",\n    \"password\": \"5435j345jjj45\",\n    \"__v\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "FIlter query",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/freelancers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"freelancers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Companies",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "Post Companies",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"company_name\": \"Nexer\",\r\n    \"company_description\": \"IT firm\",\r\n    \"company_location\": {\r\n        \"city\": \"Gothenburg\",\r\n        \"country\": \"Sweden\",\r\n        \"address\": \"Lindholmen 12\"\r\n    },\r\n    \"company_email\": \"nexer@gmail.com\",\r\n    \"company_phone\": \"0748231564\",\r\n    \"company_id\": true,\r\n    \"password\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/companies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"companies"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "284"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"11c-7DgS2y9dyGlKuEAakM3TKCX7sv0\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 25 Sep 2022 12:17:13 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"633046c968941959b4356d2c\",\n    \"company_name\": \"Nexer\",\n    \"company_description\": \"IT firm\",\n    \"company_location\": {\n        \"city\": \"Gothenburg\",\n        \"country\": \"Sweden\",\n        \"address\": \"Lindholmen 12\"\n    },\n    \"company_email\": \"nexer@gmail.com\",\n    \"company_phone\": \"0748231564\",\n    \"company_id\": \"true\",\n    \"password\": \"true\",\n    \"__v\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "Get company by ID",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Get all companies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a company by id",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Create job post based on company",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Get all job posts by a company",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Get job posts sorted by post date",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filter job post based on job title",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post job post",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a company by id",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Get all job posts by pagination",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Update a job post by id",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Get a job post by id",
+			"request": {
+				"method": "GET",
+				"header": []
 			},
 			"response": []
 		}
@@ -45,7 +1031,6 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "05864cff-5cba-4070-bac3-a59328954ebf",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -55,7 +1040,6 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "e9c319be-3306-4fc5-ba34-fcf64391213a",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -65,11 +1049,9 @@
 	],
 	"variable": [
 		{
-			"id": "cd185905-a834-4211-8030-583d17702534",
 			"key": "host",
 			"value": "http://localhost:3000",
 			"type": "string"
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }

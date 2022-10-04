@@ -86,7 +86,7 @@ router.patch('/freelancers/:id', async (request, response) => {
      } catch (error) {
          response.status(500).json({ message: error.message });
      };
-});
+});  
 
 router.delete('/freelancers/:id', async (request, response) => {
 
@@ -211,6 +211,22 @@ router.get('/freelancers?skills_field=JavaScript', async (request, response) => 
     }
 
 
+});
+
+
+//Get freelancer filter by first name
+router.get('/freelancers', function(req, res, next) {   
+    if (!req.query.first_name){return next();}
+    FreelancerModel.find({
+        first_name: { $regex: req.query.first_name, $options: 'i' }
+    },
+        function(err, freelancers) {
+            if (err) { return next(err); }
+            if (!freelancers) { return res.status(404).json(
+                {'message': 'no freelancer found'});
+            }
+        res.status(200).json(freelancers);
+    });
 });
 
 router.get('/freelancers/:id/job_posts/:id', function (request, response, next) {

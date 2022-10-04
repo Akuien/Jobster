@@ -18,9 +18,9 @@ router.post('/job_posts', function(req, res, next){
 
 
 //Get job post by id
-router.get('/api/job_posts/:id', function(req, res, next) {
+router.get('/job_posts/:id', function(req, res, next) {
     var id = req.params.id;
-    JobPost.findById(id, function(err, job_post) {
+    JobPost.find({"_id": id}, function(err, job_post) {
         if (err) { return next(err); }
         if (job_post === null) {
             return res.status(404).json({'message': 'Job_post not found!'});
@@ -31,7 +31,7 @@ router.get('/api/job_posts/:id', function(req, res, next) {
 
 
 //Get job posts sorted by post dates
-router.get('/job_posts/sort', function (req, res, next) {
+router.get('/job_posts', function (req, res, next) {
 
     JobPost.find().sort({
         post_date: req.query.sortByPost_date
@@ -43,7 +43,7 @@ router.get('/job_posts/sort', function (req, res, next) {
 });
 
 //Get all job posts filtered by job title
-router.get('/job_posts/filtered', function(req, res, next) {   
+router.get('/job_posts', function(req, res, next) {   
     if (!req.query.job_title){return next();}
     JobPost.find({
         job_title: { $regex: req.query.job_title, $options: 'i' }
@@ -60,7 +60,7 @@ router.get('/job_posts/filtered', function(req, res, next) {
 
 
 //Get all job posts and pagination
-router.get('/job_posts/pages', function(req, res, next) {     
+router.get('/job_posts', function(req, res, next) {     
     JobPost.find(function(err, job_posts) {         
         if (err) { return next(err); }   
 
