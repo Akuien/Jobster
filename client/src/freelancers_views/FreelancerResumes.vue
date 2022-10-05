@@ -6,6 +6,9 @@
                 <b-card-text>Experience: {{resume.experience_field}}</b-card-text>
             </b-card>
         </div>
+        <div style="padding:160px">
+            <b-button style="height: 70px;width: 70px;border-radius:30pt;" :href="'/freelancers/' + this.$route.params.id + '/resumes/create_resume'">Add New</b-button>
+        </div>
     </b-row>
 </template>
 

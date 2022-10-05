@@ -31,6 +31,10 @@ class FreelancersOps {
   getResumes(id) {
     return Api.get('/freelancers/' + id + '/resumes')
   }
+
+  createResume(id, body) {
+    return Api.post('/freelancers/' + id + '/resumes', body)
+  }
 }
 
 export default new FreelancersOps()

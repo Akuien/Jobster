@@ -10,6 +10,7 @@ import Companies from './companies_views/Companies.vue'
 import Company from './companies_views/Company.vue'
 import JobPosts from './companies_views/Job_Posts.vue'
 import Resumes from './freelancers_views/FreelancerResumes.vue'
+import AddResume from './freelancers_views/AddResume.vue'
 
 Vue.use(Router)
 
@@ -75,6 +76,12 @@ export default new Router({
       path: '/freelancers/:id/resumes',
       name: 'resumes',
       component: Resumes
+    },
+
+    {
+      path: '/freelancers/:id/resumes/create_resume',
+      name: 'create_resume',
+      component: AddResume
     }
   ]
 })
