@@ -4,6 +4,8 @@
           <h1>{{attribute.first_name}} {{attribute.last_name}}</h1>
           <h2>{{attribute.email_address}}</h2>
           <p>{{attribute.description}}</p>
+          <a :href="'/freelancers/' + attribute._id + '/resumes'"> Check resumes </a>
+
         </div>
         <b-button v-on:click="isInvisible = !isInvisible">Edit profile</b-button>
         <div class="row">
