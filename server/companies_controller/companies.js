@@ -136,10 +136,10 @@ router.post('/companies/:id/job_posts', async (request, response) => {
 
         const createJobPost = await JobPost.create({
             
-            job_title: req.body.job_title,
-            deadline: req.body.deadline,
-            post_date: req.body.post_date,
-            description: req.body.description,
+            job_title: request.body.job_title,
+            deadline: request.body.deadline,
+            post_date: request.body.post_date,
+            description: request.body.description,
             company: id
         })
 

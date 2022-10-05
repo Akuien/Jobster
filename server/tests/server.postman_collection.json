@@ -10,10 +10,16 @@
 			"name": "Create a freelancer",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "\r\n        {\r\n            \"first_name\": \"John\",\r\n            \"last_name\": \"Lennon\",\r\n            \"email_address\": \"johnlennon@gmail.com\",\r\n            \"phone_number\": \"+4443434242\",\r\n            \"description\": \"dsfslfslfdsdpflspldfsldfl\",\r\n            \"password\": \"5435j345jjj45\"\r\n        }",
+					"raw": "\r\n        {\r\n            \"first_name\": \"Antonio\",\r\n            \"last_name\": \"Phillip\",\r\n            \"email_address\": \"johnlennon@gmail.com\",\r\n            \"phone_number\": \"+4443434242\",\r\n            \"description\": \"dsfslfslfdsdpflspldfsldfl\",\r\n            \"password\": \"5435j345jjj45\"\r\n        }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -21,12 +27,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/freelancers",
-					"protocol": "http",
+					"raw": "{{host}}/api/freelancers",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"freelancers"
@@ -121,12 +125,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/freelancers/:id",
-					"protocol": "http",
+					"raw": "{{host}}/api/freelancers/:id",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"freelancers",
@@ -135,7 +137,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "6320f263c2a8283714c69963"
+							"value": "633c96508d45dc2e507dd6f9"
 						}
 					]
 				}
@@ -223,12 +225,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/freelancers",
-					"protocol": "http",
+					"raw": "{{host}}/api/freelancers",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"freelancers"
@@ -303,7 +303,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "    {\r\n        \"last_name\": \"Deng\"\r\n    }\r\n",
+					"raw": "    {\r\n        \"last_name\": \"Deng\",\r\n        \"phone_number\": \"+4670000000\"\r\n    }\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -311,12 +311,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/freelancers/:id",
-					"protocol": "http",
+					"raw": "{{host}}/api/freelancers/:id",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"freelancers",
@@ -332,7 +330,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "6328817e40f0a05ab0183f94"
+							"value": "633c96508d45dc2e507dd6f9"
 						}
 					]
 				}
@@ -424,8 +422,47 @@
 		{
 			"name": "Create a resume based on freelancer id",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"education_field\":\"Lindholmen park\",\r\n\"experience_field\":\"Internship\",\r\n\"skills_field\":\"Python, JavaScript\",\r\n\"freelancer\":{\"_id\":\"632cb232cbd72d4de4994032\"}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/freelancers/:id/resumes",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"freelancers",
+						":id",
+						"resumes"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "633c5501eecc40547050332f",
+							"disabled": true
+						},
+						{
+							"key": null,
+							"value": "",
+							"disabled": true
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "633c5501eecc40547050332f"
+						}
+					]
+				}
 			},
 			"response": [
 				{
@@ -586,16 +623,28 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/freelancers/resumes",
-					"protocol": "http",
+					"raw": "{{host}}/api/freelancers/:id/resumes",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"freelancers",
+						":id",
 						"resumes"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "633c5501eecc40547050332f",
+							"disabled": true
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "633c5501eecc40547050332f"
+						}
 					]
 				}
 			},
@@ -681,12 +730,10 @@
 					"file": {}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/freelancers/:id/resumes/:id?id=632dd200f1b1c14540b0363b",
-					"protocol": "http",
+					"raw": "{{host}}/api/freelancers/:id/resumes/:id?=633d7a6d6908d306e8449f90",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"freelancers",
@@ -696,14 +743,14 @@
 					],
 					"query": [
 						{
-							"key": "id",
-							"value": "632dd200f1b1c14540b0363b"
+							"key": "",
+							"value": "633d7a6d6908d306e8449f90"
 						}
 					],
 					"variable": [
 						{
 							"key": "id",
-							"value": "632730c87af1f472c4ab501b"
+							"value": "633c5501eecc40547050332f"
 						}
 					]
 				}
@@ -716,12 +763,10 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api//freelancers/:id/resumes/:id",
-					"protocol": "http",
+					"raw": "{{host}}/api//freelancers/:id/resumes/:id",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"",
@@ -752,7 +797,24 @@
 			"name": "Delete one freelancer by id",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/freelancers/:id",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"freelancers",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "633c96508d45dc2e507dd6f9"
+						}
+					]
+				}
 			},
 			"response": [
 				{
@@ -824,19 +886,35 @@
 		},
 		{
 			"name": "FIlter query",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://localhost:3000/api/freelancers",
-					"protocol": "http",
+					"raw": "{{host}}/api/freelancers?first_name=G",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"freelancers"
+					],
+					"query": [
+						{
+							"key": "first_name",
+							"value": "G"
+						}
 					]
 				}
 			},
@@ -845,8 +923,27 @@
 		{
 			"name": "Post Companies",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"job_posts\": [],\r\n        \"company_name\": \"Facebook\",\r\n        \"company_description\": \"IT giants\",\r\n        \"company_location\": {\r\n            \"_id\": \"633c62402f33463bc8fcafea\",\r\n            \"city\": \"Gothenburg\",\r\n            \"country\": \"Sweden\",\r\n            \"address\": \"Norstan 12\"\r\n        },\r\n        \"company_email\": \"facebook@gmail.com\",\r\n        \"company_phone\": \"0711111111\",\r\n        \"company_id\": \"true\",\r\n        \"password\": \"Warrap\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/companies",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"companies"
+					]
+				}
 			},
 			"response": [
 				{
@@ -922,7 +1019,24 @@
 			"name": "Get company by ID",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/companies/:id",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"companies",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "633cd6da3aac8210606c6b6d"
+						}
+					]
+				}
 			},
 			"response": []
 		},
@@ -932,7 +1046,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "{{host}}/api/companies",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"companies"
+					]
 				}
 			},
 			"response": []
@@ -940,16 +1061,76 @@
 		{
 			"name": "Update a company by id",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"company_phone\": \"07000011111\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/companies/:id",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"companies",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "63303ad0dae2b5089cc3d61e"
+						}
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Create job post based on company",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n    \"job_title\" :\"database admin12\",\r\n    \"deadline\": \"2022-01-23\",\r\n    \"post_date\": \"2021-12-26\",\r\n    \"description\": \"Junior software engineer\",\r\n    \"company\": {\"_id\": \"633cd6da3aac8210606c6b6d\"}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/companies/:id/job_posts",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"companies",
+						":id",
+						"job_posts"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "633cd6da3aac8210606c6b6d"
+						}
+					]
+				}
 			},
 			"response": []
 		},
@@ -957,7 +1138,25 @@
 			"name": "Get all job posts by a company",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/companies/:id/job_posts",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"companies",
+						":id",
+						"job_posts"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "633cd6da3aac8210606c6b6d"
+						}
+					]
+				}
 			},
 			"response": []
 		},
@@ -967,7 +1166,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "{{host}}/api/job_posts",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"job_posts"
+					]
 				}
 			},
 			"response": []
@@ -978,7 +1184,20 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "{{host}}/api/job_postsFiltered?job_title=data",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"job_postsFiltered"
+					],
+					"query": [
+						{
+							"key": "job_title",
+							"value": "data"
+						}
+					]
 				}
 			},
 			"response": []
@@ -986,10 +1205,26 @@
 		{
 			"name": "post job post",
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"job_title\" :\"system admin\",\r\n    \"deadline\": \"2022-01-23\",\r\n    \"post_date\": \"2021-12-26\",\r\n    \"description\": \"senior software engineer\",\r\n    \"company\": {\"_id\": \"633cd6da3aac8210606c6b6d\"}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": ""
+					"raw": "{{host}}/api/job_posts",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"job_posts"
+					]
 				}
 			},
 			"response": []
@@ -997,8 +1232,25 @@
 		{
 			"name": "Delete a company by id",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/companies/:id",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"companies",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "63303ad0dae2b5089cc3d61e"
+						}
+					]
+				}
 			},
 			"response": []
 		},
@@ -1006,15 +1258,51 @@
 			"name": "Get all job posts by pagination",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/job_postsPagination",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"job_postsPagination"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Update a job post by id",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"IoT expert with at least 3 years experience\",\r\n    \"job_title\": \" Senior IoT engineering\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/job_posts/:id",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"job_posts",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "6331ee9f9d56c34310d372ff"
+						}
+					]
+				}
 			},
 			"response": []
 		},
@@ -1022,7 +1310,24 @@
 			"name": "Get a job post by id",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/job_posts/:id",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"job_posts",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "633c7d1f47a592537ccf724f"
+						}
+					]
+				}
 			},
 			"response": []
 		}

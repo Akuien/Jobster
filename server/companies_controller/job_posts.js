@@ -43,7 +43,7 @@ router.get('/job_posts', function (req, res, next) {
 });
 
 //Get all job posts filtered by job title
-router.get('/job_posts/', function(req, res, next) {   
+router.get('/job_postsFiltered', function(req, res, next) {   
     if (!req.query.job_title){return next();}
     JobPost.find({
         job_title: { $regex: req.query.job_title, $options: 'i' }
@@ -60,7 +60,7 @@ router.get('/job_posts/', function(req, res, next) {
 
 
 //Get all job posts and pagination
-router.get('/job_posts', function(req, res, next) {     
+router.get('/job_postsPagination', function(req, res, next) {     
     JobPost.find(function(err, job_posts) {         
         if (err) { return next(err); }   
 
