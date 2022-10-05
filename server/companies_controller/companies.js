@@ -78,7 +78,7 @@ router.patch('/companies/:id', function(req, res, next) {
 router.delete('/companies/:id', function(req, res) {
     var id = req.params.id;
 
-    Company.findOneAndDelete({_id: id}, function(err, company) {
+    Company.findOneAndDelete({"_id": id}, function(err, company) {
         if (err) { return next(err); }
         if (company === null) {
             return res.status(404).json({'message': 'Company not found'});
