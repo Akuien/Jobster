@@ -4,11 +4,12 @@ const user_login = require("../logins/loginUser");
 const FreelancerModel = require('../models/freelancer');
 const ResumeModel = require('../models/resume');
 const JobPostModel = require('../models/job_post');
-const { ObjectId } = require('mongodb');
+const freelancers = []
 
 
 
 router.post('/freelancers', async (request, response) => {
+
     
     try {
 
@@ -22,6 +23,7 @@ router.post('/freelancers', async (request, response) => {
             password: request.body.password
         })
         const createdFreelancer = await freelancer.save();
+        freelancers.push(createdFreelancer)
         
         response.json(createdFreelancer);
     }

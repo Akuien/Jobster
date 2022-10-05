@@ -2,13 +2,16 @@
   <div id="app">
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
       <div class="container-fluid">
-        <router-link to="/" class="navbar-brand">Home</router-link>
+        <router-link to="/" class="navbar-brand">Jobster</router-link>
         <ul class="navbar-nav">
           <li class="nav-item" >
             <router-link class="nav-link" to="/jobs">Jobs</router-link>
           </li>
           <li class="nav-item" >
             <router-link class="nav-link" to="/freelancers">Freelancers</router-link>
+          </li>
+          <li class="nav-item" >
+            <router-link class="nav-link" to="/companies">Companies</router-link>
           </li>
            <li class="nav-item" >
             <router-link class="nav-link" to="/About">About</router-link>
