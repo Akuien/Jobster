@@ -23,6 +23,10 @@ class FreelancersOps {
   deleteFreelancer(id) {
     return Api.delete('/freelancers/' + id)
   }
+
+  updateFreelancer(id, body) {
+    return Api.patch('/freelancers/' + id, body)
+  }
 }
 
 export default new FreelancersOps()
