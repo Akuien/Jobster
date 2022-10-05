@@ -38,7 +38,7 @@ CompanySchema.pre("save", async function(next) {
 });
 
 //Generate an auth token for a company
-CompanySchema.methods.generateAuthToken = async function() {
+generateAuthToken = async function() {
     const company = this;
     const token = jwt.sign({_id: company._id, email: company.company_email, name: company.company_name}, "secret");
     company.tokens = company.token.concat({token});
@@ -47,8 +47,8 @@ CompanySchema.methods.generateAuthToken = async function() {
 };
 
 //Authenticate or validate user
-CompanySchema.statics.findByCredentials = async (email, password) => {
-    const company = await CompanySchema.findOne({email});
+findByCredentials = async (email, password) => {
+    const company = await CompanySchema.find({email});
     if (!company) {
         throw new error({error: "Invalid login details"});
     }
@@ -131,4 +131,8 @@ CompanySchema
     }); */
 
 module.exports = mongoose.model('Company', CompanySchema);
+module.exports = {
+    findByCredentials,
+    generateAuthToken
+}
 

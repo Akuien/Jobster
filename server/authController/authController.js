@@ -82,17 +82,17 @@ registerNewCompany =  function(req, res) {
     }
 };  
 
-
+/*
 loginCompany = function(req, res ) {
     const email = req.body.company_email;
     const password = req.body.password;
 
-    const company = Company.find({"company_email": email});
+    const company = findByCredentials(email, password);
 
             
             if(company.length < 1){
                 return res.status(401).json({
-                    message: 'Please provide valid email and/or password'
+                    message: 'Please provide valid email or password'
                 });
             }
             bcrypt.compare(password, company.password, function(err, result){
@@ -107,12 +107,12 @@ loginCompany = function(req, res ) {
                     //return res.status(200).json(company);
                 }
                 return res.status(401).json({
-                    message: 'Please provide valid email and/or password'
+                    message: 'Invalid details'
                 });
             });
         }
 
-/*
+
 
 loginCompany = async (req, res) => {
     try {
@@ -138,7 +138,6 @@ loginCompany = async (req, res) => {
   }
 
 
-
 /*
 loginCompany = async (req, res) => {
     try {
@@ -153,7 +152,57 @@ loginCompany = async (req, res) => {
     } catch (err) {
       res.status(400).json({ err: err });
     }
+  };  
+
+
+  loginCompany = async (req, res) => {
+    try {
+      const email = req.body.email;
+      const password = req.body.password;
+      const company = await findByCredentials(email, password);
+      if (!company) {
+        return res.status(401).json({ error: "Login failed! Check authentication credentials" });
+      }
+      const token = await company.generateAuthToken();
+      res.status(201).json({ company, token });
+    } catch (err) {
+      res.status(400).json({ err: err });
+    }
   };  */
+
+
+
+  loginCompany = function(req, res ) {
+    if(req.body.company_email && req.body.password){
+        const email = req.body.company_email;
+        Company.find({"company_email": email}, function(err, company){
+            if(err){
+                return res.status(404).json({'message': 'Company not found!', 'error': err});
+            }
+            if(company.length < 1){
+                return res.status(401).json({
+                    message: 'Please provide valid email and/or password'
+                });
+            }
+            bcrypt.compare(req.body.password, company[0].password, function(err, result){
+                if(err){
+                    return res.status(401).json({
+                        message: 'Please provide valid email and/or password'
+                    });
+                }
+                if(result){
+                    return res.status(200).json(company[0]);
+                }
+                return res.status(401).json({
+                    message: 'Please provide valid email and/or password'
+                });
+            });
+        });} else{
+        return res.status(401).json({
+            message: 'Please provide valid email and/or password'
+        });
+    }
+};
 
 
 
