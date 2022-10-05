@@ -27,6 +27,10 @@ class FreelancersOps {
   updateFreelancer(id, body) {
     return Api.patch('/freelancers/' + id, body)
   }
+
+  getResumes(id) {
+    return Api.get('/freelancers/' + id + '/resumes')
+  }
 }
 
 export default new FreelancersOps()
