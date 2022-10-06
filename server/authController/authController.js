@@ -152,30 +152,33 @@ loginCompany = async (req, res) => {
     } catch (err) {
       res.status(400).json({ err: err });
     }
-  };  
-
-
-  loginCompany = async (req, res) => {
-    try {
-      const email = req.body.email;
-      const password = req.body.password;
-      const company = await findByCredentials(email, password);
-      if (!company) {
-        return res.status(401).json({ error: "Login failed! Check authentication credentials" });
-      }
-      const token = await company.generateAuthToken();
-      res.status(201).json({ company, token });
-    } catch (err) {
-      res.status(400).json({ err: err });
-    }
   };  */
 
 
+  loginCompany = (req, res) => {
+      const email = req.body.email;
+      const password = req.body.password;
+      const company = Company.find({email: email}).then((err, company) => {
+        if (!company) {
+            return res.status(404).json({ error: "Account does not exist." });
+        }
+        if (bcrypt.compare(password, company.password)){
+            const token = company.generateAuthToken();
+            res.status(201).json({ company, token });    
+        } else {
+            return res.status(400).json({error: 'Email or password incorrect.'})
+        }
+     }).catch((err) => {return res.send(err);});
+    }; 
+    
 
-  loginCompany = function(req, res ) {
+
+
+ /* loginCompany = function(req, res ) {
     if(req.body.company_email && req.body.password){
         const email = req.body.company_email;
-        Company.find({"company_email": email}, function(err, company){
+        var company = Company.req.body;
+        company.find({"company_email": email}, function(err, company){
             if(err){
                 return res.status(404).json({'message': 'Company not found!', 'error': err});
             }
@@ -202,7 +205,7 @@ loginCompany = async (req, res) => {
             message: 'Please provide valid email and/or password'
         });
     }
-};
+}; */
 
 
 
