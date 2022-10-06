@@ -1,9 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-//var passportLocalMongoose = require('passport-local-mongoose');
-// plugin for passport-local-mongoose
-//UserSchema.plugin(passportLocalMongoose);
 
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -37,27 +34,6 @@ CompanySchema.pre("save", async function(next) {
     next();
 });
 
-//Generate an auth token for a company
-generateAuthToken = async function() {
-    const company = this;
-    const token = jwt.sign({_id: company._id, email: company.company_email, name: company.company_name}, "secret");
-    company.tokens = company.token.concat({token});
-    await company.save();
-    return token;
-};
-
-//Authenticate or validate user
-findByCredentials = async (email, password) => {
-    const company = await CompanySchema.find({email});
-    if (!company) {
-        throw new error({error: "Invalid login details"});
-    }
-    const isPasswordMatch = await bcrypt.compare(password, company.password);
-    if (!isPasswordMatch) {
-        throw new Error({error: "Invalid login details"});
-    }
-    return company;
-}   
 
 // getting company name
 
@@ -124,15 +100,11 @@ CompanySchema
         return `/models/company/${this._id}`;
     });
 
-   /* CompanySchema
+CompanySchema
     .virtual('Token')
     .get(function () {
         return token;
-    }); */
+    }); 
 
 module.exports = mongoose.model('Company', CompanySchema);
-module.exports = {
-    findByCredentials,
-    generateAuthToken
-}
 
