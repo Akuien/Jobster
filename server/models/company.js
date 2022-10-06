@@ -2,9 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-
 
 var company_locationSchema = new Schema({
         city: { type: String, required: true },
@@ -23,15 +20,6 @@ const CompanySchema = new Schema({
     tokens: [ { 
         token: {type: String, required: true}
     }]
-});
-
-// Encrypt password before saving
-CompanySchema.pre("save", async function(next) {
-    const company = this;
-    if (company.isModified("password")) {
-        company.password =await bcrypt.hash(company.password, 8);
-    }
-    next();
 });
 
 
