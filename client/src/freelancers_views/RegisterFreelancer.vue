@@ -83,10 +83,11 @@ export default {
     createFreelancer() {
       FreelancersOps.createOneFreelancer(this.data)
         .then(() => {
+          this.$toasted.show('Account created successfully!')
           this.$router.push('/')
         })
         .catch(error => {
-          console.log(error)
+          this.$toasted.show(error)
         })
     }
   }

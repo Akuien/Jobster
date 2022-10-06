@@ -24,10 +24,9 @@ export default {
       CompaniesOps.getAllJobs(id)
         .then(response => {
           this.jobs = response.data
-          console.log(response)
         })
         .catch(error => {
-          console.log(error)
+          this.$toasted.show(error)
         })
     }
   },

@@ -46,10 +46,11 @@ export default {
     createResume() {
       FreelancersOps.createResume(this.$route.params.id, this.data)
         .then(() => {
+          this.$toasted.show('Resume successfully created!')
           this.$router.push('/freelancers/' + this.$route.params.id + '/resumes')
         })
         .catch(error => {
-          console.log(error)
+          this.$toasted.show(error)
         })
     }
   }

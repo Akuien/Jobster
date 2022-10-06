@@ -25,7 +25,7 @@ export default {
           this.company = response.data
         })
         .catch(error => {
-          console.log(error)
+          this.$toasted.show(error)
         })
     }
   },

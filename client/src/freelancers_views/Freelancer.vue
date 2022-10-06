@@ -68,16 +68,17 @@ export default {
           this.freelancer = response.data
         })
         .catch(error => {
-          console.log(error)
+          this.$toasted.show(error)
         })
     },
     updateFreelancer() {
       FreelancersOps.updateFreelancer(this.$route.params.id, this.body)
         .then(() => {
+          this.$toasted.show('Account has been successfully updated!')
           window.location.reload()
         })
         .catch(error => {
-          console.log(error)
+          this.$toasted.show(error)
         })
     }
   },

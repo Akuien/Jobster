@@ -31,17 +31,18 @@ export default {
           this.freelancers = response.data
         })
         .catch(error => {
-          console.log(error)
+          this.$toasted.show(error)
         })
     },
     deleteFreelancer(id) {
       FreelancersOps.deleteFreelancer(id)
         .then(() => {
+          this.$toasted.show('Freelancer successfully deleted')
           const index = this.freelancers.findIndex(freelancer => freelancer._id === id)
           this.freelancers.splice(index, 1)
         })
         .catch(error => {
-          console.log(error)
+          this.$toasted.show(error)
         })
     }
   }
