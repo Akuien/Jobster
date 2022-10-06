@@ -29,7 +29,7 @@ export default {
           this.resumes = response.data
         })
         .catch(error => {
-          console.log(error)
+          this.$toasted.show(error)
         })
     }
   },

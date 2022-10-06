@@ -30,7 +30,7 @@ export default {
           this.companies = response.data
         })
         .catch(error => {
-          console.log(error)
+          this.$toasted.show(error)
         })
     }
   }
