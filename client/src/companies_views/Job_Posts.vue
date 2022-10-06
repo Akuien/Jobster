@@ -1,11 +1,12 @@
 <template>
-    <div>
+    <b-row>
         <div v-for="job in jobs" v-bind:key="job._id">
-          <h1>{{job.company_name}}</h1>
-          <h2>{{job.description}}</h2>
-          <b-button style="background-color: grey;" :href="'/companies/' + company._id + '/job_posts'">Check out jobs</b-button>
+          <b-card style="height: 20rem;width: 20rem; background-color: lightgrey; padding: 80px; margin-top: 20px; margin-left: 50px; margin-bottom: 20px; position:relative">
+                <h1>{{job.job_title}}</h1>
+                <b-card-text>{{job.description}}</b-card-text>
+          </b-card>
         </div>
-    </div>
+    </b-row>
 </template>
 
 <script>
@@ -15,7 +16,7 @@ export default {
   name: 'jobs',
   data() {
     return {
-      jobs: null
+      jobs: []
     }
   },
   methods: {
@@ -23,6 +24,7 @@ export default {
       CompaniesOps.getAllJobs(id)
         .then(response => {
           this.jobs = response.data
+          console.log(response)
         })
         .catch(error => {
           console.log(error)
