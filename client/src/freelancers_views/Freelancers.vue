@@ -1,15 +1,62 @@
 <template>
     <b-row>
         <div v-for="freelancer in freelancers" v-bind:key="freelancer._id">
-            <b-card style="height: 20rem;width: 20rem; background-color: lightgrey; padding: 80px; margin-top: 20px; margin-left: 50px; margin-bottom: 20px; position:relative">
-                <b-button style="margin-left: 7em;position:absolute" @click="deleteFreelancer(freelancer._id)">X</b-button>
-                <h3>{{freelancer.first_name}}</h3>
-                <b-card-text>{{freelancer.description}}</b-card-text>
-                <b-button style="background-color: grey;" :href="'/freelancers/' + freelancer._id">Read more</b-button>
+            <b-card class="card">
+              <div>
+                <h4 class="first_name">{{freelancer.first_name}} {{freelancer.last_name}}</h4>
+              </div>
+                  <b-card-text class="card_text">{{freelancer.description}}</b-card-text>
+                <div class="button_container">
+                  <b-button class="readmore_button" :href="'/freelancers/' + freelancer._id">Read more</b-button>
+                </div>
+                <div>
+                <b-button class="delete_button" @click="deleteFreelancer(freelancer._id)">Delete</b-button>
+              </div>
             </b-card>
         </div>
     </b-row>
 </template>
+
+<style scoped>
+  .card_text {
+    position: absolute;
+    margin-right: 80px;
+    margin-top: 90px;
+    width: 200px;
+    display: flex;
+  }
+  .first_name {
+    margin-bottom: 50px;
+    position: absolute;
+    margin-right: 80px;
+  }
+  .delete_button {
+    position: absolute;
+    background-color: red;
+    margin-top: 20px;
+    display: flex;
+    margin-left: 35px;
+  }
+  .button_container {
+    position: relative;
+    margin: auto;
+  }
+
+  .card {
+    height: 26rem;
+    width: 20rem;
+    background-color: lightgray;
+    padding: 70px;
+    margin-top: 40px;
+    margin-left: 80px;
+    margin-bottom: 20px;
+  }
+
+  .readmore_button {
+    background-color: grey;
+    margin-top: 200px;
+  }
+</style>
 
 <script>
 import FreelancersOps from './FreelancersOps'
