@@ -19,7 +19,7 @@
         <h3 class="description_title">Description:</h3>
         <div class="row">
           <div class="col">
-            <b-form-textarea type="text" id="description" class="form-control" v-model="data.description" placeholder="Write a short description" rows="5" max-rows="8"></b-form-textarea>
+            <b-form-textarea type="text" id="description" class="form-control" v-model="data.description" placeholder="Write a short description. Max amount of characters: 80" rows="5" max-rows="8" maxlength="80"></b-form-textarea>
           </div>
         </div>
       </div>
@@ -58,20 +58,14 @@
     padding: 10px;
     width: 50%;
   }
+  h3 {
+  color: gray;
+}
   @media screen and (max-width: 768px) {
       .section {
         padding: 0em;
       }
-      .name_title {
-        margin-top: 20px;
-        margin-bottom: 20px;
-      }
-      .description_title {
-        margin-bottom: 20px;
-      }
-      .pass_title {
-        margin-bottom: 20px;
-      }
+
       #first_name {
         width: 200px;
       }

@@ -2,14 +2,11 @@
     <b-row>
         <div v-for="freelancer in freelancers" v-bind:key="freelancer._id">
             <b-card class="card">
-              <div>
-                <h4 class="first_name">{{freelancer.first_name}} {{freelancer.last_name}}</h4>
-              </div>
-                  <b-card-text class="card_text">{{freelancer.description}}</b-card-text>
+              <img src="https://bodhicounseling.com/wp-content/uploads/2018/05/blank-profile-picture-973460_960_720-150x150.png" alt="profile_pic" />
+              <h5 class="first_name">{{freelancer.first_name}} {{freelancer.last_name}}</h5>
+              <b-card-text class="card_text">{{freelancer.description}}</b-card-text>
                 <div class="button_container">
                   <b-button class="readmore_button" :href="'/freelancers/' + freelancer._id">Read more</b-button>
-                </div>
-                <div>
                 <b-button class="delete_button" @click="deleteFreelancer(freelancer._id)">Delete</b-button>
               </div>
             </b-card>
@@ -18,43 +15,55 @@
 </template>
 
 <style scoped>
-  .card_text {
-    position: absolute;
-    margin-right: 80px;
-    margin-top: 90px;
-    width: 200px;
-    display: flex;
+
+  img {
+    border-radius: 50%;
+    height: 120px;
+    width: 120px;
   }
-  .first_name {
-    margin-bottom: 50px;
-    position: absolute;
-    margin-right: 80px;
+  h5 {
+    margin: 10px;
+    color: #283655;
+  }
+  .card_text {
+    font-size: 15px;
+    line-height: 21px;
+    color: #4D648D;
+    margin-top: 20px;
   }
   .delete_button {
-    position: absolute;
-    background-color: red;
-    margin-top: 20px;
-    display: flex;
-    margin-left: 35px;
+    background-color: rgb(218, 68, 68);
+    margin-left: 10px;
   }
   .button_container {
-    position: relative;
-    margin: auto;
+    padding: 10px;
   }
-
   .card {
     height: 26rem;
     width: 20rem;
-    background-color: lightgray;
-    padding: 70px;
+    background-color: #eceff2;
+    padding: 10px;
     margin-top: 40px;
     margin-left: 80px;
     margin-bottom: 20px;
+    border-radius: 8px;
+	  box-shadow: 0px 8px 15px -7px gray;
+	  position: relative;
+	  text-align: center;
+    transition: ease-in-out 0.35s;
   }
-
+  .card:hover{
+     transform: scale(1.10);
+     box-shadow: 10px 10px 15px -7px gray;
+  }
   .readmore_button {
-    background-color: grey;
-    margin-top: 200px;
+    background-color: #8d8b8b;
+  }
+  @media screen and (max-width: 768px) {
+  
+  .card {
+    margin-left: 13%;
+  }
   }
 </style>
 
