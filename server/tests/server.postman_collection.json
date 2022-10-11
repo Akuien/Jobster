@@ -1621,6 +1621,100 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "put job_post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n    \"job_title\" :\"software engineer\",\r\n    \"deadline\": \"2022-01-23\",\r\n    \"post_date\": \"2021-12-26\",\r\n    \"description\": \"cyber engineer\",\r\n    \"company\": {\"_id\": \"63303adbdae2b5089cc3d620\"}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/job_posts/:id",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"job_posts",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "6345dbacb6dbf43258f2c1a1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Freelancer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n        {\r\n            \"first_name\": \"Johnsson\",\r\n            \"last_name\": \"Antonio\",\r\n            \"email_address\": \"33johnny@gmail.com\",\r\n            \"phone_number\": \"+467221100\",\r\n            \"description\": \"Hi, I'm Antonio a fullstack developer with years of experience in javascript, typescript, bootstrap and VUe\",\r\n            \"password\": \"Gantonio\"\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/freelancers/:id",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"freelancers",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "6345e5a0b134692c2411a75e"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [

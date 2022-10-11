@@ -32,7 +32,6 @@ export default {
 
   mounted() {
     this.getJobs()
-    this.getJobPost(this.$route.params.id)
   },
   data() {
     return {
@@ -56,15 +55,6 @@ export default {
         })
         .catch(error => {
           console.log(error)
-        })
-    },
-    getJobPost(id) {
-      Api.get('/job_posts/' + id)
-        .then(response => {
-          this.jobPost = response.data
-        })
-        .catch(error => {
-          this.$toasted.show(error)
         })
     }
   }

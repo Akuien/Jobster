@@ -86,7 +86,35 @@ router.patch('/freelancers/:id', async (request, response) => {
      } catch (error) {
          response.status(500).json({ message: error.message });
      };
-});  
+});
+
+
+router.put('/freelancers/:id', async (request, response) => {
+
+    const id = request.params.id;
+
+    try {
+        FreelancerModel.findById(id, function(err, freelancer) {
+            if (err) { response.status(409).json({'message': 'freelancer update failed!', 'error': err}); }
+            if (freelancer === null) {
+                return response.status(404).json({'message': 'Freelancer not found'});
+            }
+            freelancer.first_name = request.body.first_name;
+            freelancer.last_name = request.body.last_name;
+            freelancer.email_address = request.body.email_address;
+            freelancer.phone_number = request.body.phone_number;
+            freelancer.description = request.body.description;
+            freelancer.resume = request.body.resume;
+            freelancer.password = request.body.password;
+    
+            freelancer.save();
+            response.json(freelancer);
+        });
+
+     } catch (error) {
+         response.status(500).json({ message: error.message });
+     };
+});
 
 router.delete('/freelancers/:id', async (request, response) => {
 
