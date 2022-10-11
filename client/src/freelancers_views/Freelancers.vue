@@ -6,7 +6,7 @@
               <h5 class="first_name">{{freelancer.first_name}} {{freelancer.last_name}}</h5>
               <b-card-text class="card_text">{{freelancer.description}}</b-card-text>
                 <div class="button_container">
-                  <b-button class="readmore_button" :href="'/freelancers/' + freelancer._id">Read more</b-button>
+                <b-button class="readmore_button" :href="'/freelancers/' + freelancer._id">Read more</b-button>
                 <b-button class="delete_button" @click="deleteFreelancer(freelancer._id)">Delete</b-button>
               </div>
             </b-card>
@@ -39,18 +39,18 @@
     padding: 10px;
   }
   .card {
-    height: 26rem;
-    width: 20rem;
-    background-color: #eceff2;
-    padding: 10px;
-    margin-top: 40px;
-    margin-left: 80px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-	  box-shadow: 0px 8px 15px -7px gray;
-	  position: relative;
-	  text-align: center;
-    transition: ease-in-out 0.35s;
+  height: 23rem;
+  width: 20rem;
+  background-color: #eceff2;
+  padding: 10px;
+  margin-top: 40px;
+  margin-left: 80px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 8px 15px -7px gray;
+  position: relative;
+  text-align: center;
+  transition: ease-in-out 0.35s;
   }
   .card:hover{
      transform: scale(1.10);
@@ -60,11 +60,10 @@
     background-color: #8d8b8b;
   }
   @media screen and (max-width: 768px) {
-  
-  .card {
-    margin-left: 13%;
-  }
-  }
+   .card {
+     margin-left: 13%;
+    }
+}
 </style>
 
 <script>
