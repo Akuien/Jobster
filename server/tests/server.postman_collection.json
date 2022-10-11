@@ -32,7 +32,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "\r\n        {\r\n            \"first_name\": \"Antonio\",\r\n            \"last_name\": \"Phillip\",\r\n            \"email_address\": \"johnlennon@gmail.com\",\r\n            \"phone_number\": \"+4443434242\",\r\n            \"description\": \"dsfslfslfdsdpflspldfsldfl\",\r\n            \"password\": \"5435j345jjj45\"\r\n        }",
+					"raw": "\r\n        {\r\n            \"first_name\": \"Antonio\",\r\n            \"last_name\": \"Johnsson\",\r\n            \"email_address\": \"johnny33@gmail.com\",\r\n            \"phone_number\": \"+467001122\",\r\n            \"description\": \"Hi, I'm Antonio a fullstack developer with years of experience in javascript, typescript, bootstrap and VUe\",\r\n            \"password\": \"AntonioG\"\r\n        }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -355,7 +355,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "    {\r\n        \"last_name\": \"Deng\",\r\n        \"phone_number\": \"+4670000000\"\r\n    }\r\n",
+					"raw": "{\r\n\r\n        \"phone_number\": \"+1511223344\",\r\n        \"description\": \"Hi, I am Mark Zuckerberg! I'm a young engineer with skills in software development, project management\"\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -382,7 +382,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "633c96508d45dc2e507dd6f9"
+							"value": "634075b70d518d755c8a54f6"
 						}
 					]
 				}
@@ -1290,7 +1290,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \r\n    \"job_title\" :\"database admin12\",\r\n    \"deadline\": \"2022-01-23\",\r\n    \"post_date\": \"2021-12-26\",\r\n    \"description\": \"Junior software engineer\",\r\n    \"company\": {\"_id\": \"633cd6da3aac8210606c6b6d\"}\r\n}",
+					"raw": "{\r\n    \r\n    \"job_title\" :\"database admin12\",\r\n    \"deadline\": \"2022-01-23\",\r\n    \"post_date\": \"2021-12-26\",\r\n    \"description\": \"DevOps engineer\",\r\n    \"company\": {\"_id\": \"63303adbdae2b5089cc3d620\"}\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1318,7 +1318,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "633cd6da3aac8210606c6b6d"
+							"value": "63303adbdae2b5089cc3d620"
 						}
 					]
 				}
@@ -1357,7 +1357,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "633cd6da3aac8210606c6b6d"
+							"value": "63303adbdae2b5089cc3d620"
 						}
 					]
 				}
@@ -1577,7 +1577,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "6331ee9f9d56c34310d372ff"
+							"value": "6345dbacb6dbf43258f2c1a1"
 						}
 					]
 				}
