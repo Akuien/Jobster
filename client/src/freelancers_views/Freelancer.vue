@@ -1,46 +1,114 @@
 <template>
-    <div>
+    <b-container>
         <div v-for="attribute in freelancer" v-bind:key="attribute._id">
+          <b-card class="card">
+          <img src="https://bodhicounseling.com/wp-content/uploads/2018/05/blank-profile-picture-973460_960_720-150x150.png" alt="profile_pic" />
           <h1>{{attribute.first_name}} {{attribute.last_name}}</h1>
-          <h2>{{attribute.email_address}}</h2>
+          <h4>{{attribute.email_address}}</h4>
           <p>{{attribute.description}}</p>
-          <a :href="'/freelancers/' + attribute._id + '/resumes'"> Check resumes </a>
-
+          <b-button :href="'/freelancers/' + attribute._id + '/resumes'" id="resume_button"> My Resumes </b-button>
+          <b-button v-on:click="isInvisible = !isInvisible" id="edit_button">Edit profile</b-button>
+          </b-card>
         </div>
-        <b-button v-on:click="isInvisible = !isInvisible">Edit profile</b-button>
-        <div class="row">
-          <div style="padding:5em;width:2em" class="col">
-            <input v-if="!isInvisible" type="text" class="form-control" v-model="body.first_name" placeholder="Change First Name">
+        <b-row>
+          <div class="col">
+            <b-form-input v-if="!isInvisible" type="text" class="form-control" v-model="body.first_name" placeholder="Change First Name"></b-form-input>
           </div>
-          <div style="padding:5em;width:2em" class="col">
-            <input v-if="!isInvisible" type="text" class="form-control" v-model="body.last_name" placeholder="Change Last Name">
+        </b-row>
+        <b-row>
+          <div class="col">
+            <b-form-input v-if="!isInvisible" type="text" class="form-control" v-model="body.last_name" placeholder="Change Last Name"></b-form-input>
           </div>
-        </div>
-        <div class="row">
-            <div style="padding:5em;width:2em" class="col">
-              <input v-if="!isInvisible" type="text" class="form-control" v-model="body.description" placeholder="Change description">
+        </b-row>
+        <b-row>
+            <div class="col">
+              <b-form-textarea rows="5" max-rows="8" maxlength="80" v-if="!isInvisible" type="text" class="form-control" v-model="body.description" placeholder="Change description"></b-form-textarea>
             </div>
-        </div>
-        <div class="row">
-            <div style="padding:5em;width:2em" class="col">
-              <input v-if="!isInvisible" type="text" class="form-control" v-model="body.email_address" placeholder="Change email address">
+        </b-row>
+        <b-row>
+            <div class="col">
+              <b-form-input v-if="!isInvisible" type="text" class="form-control" v-model="body.email_address" placeholder="Change email address"></b-form-input>
             </div>
-        </div>
-        <div class="row">
-            <div style="padding:5em;width:2em" class="col">
-              <input v-if="!isInvisible" type="text" class="form-control" v-model="body.phone_number" placeholder="Change phone number">
+        </b-row>
+        <b-row>
+            <div class="col">
+              <b-form-input v-if="!isInvisible" type="text" class="form-control" v-model="body.phone_number" placeholder="Change phone number"></b-form-input>
             </div>
-        </div>
-        <div class="row">
-            <div style="padding:5em;width:2em" class="col">
-              <input v-if="!isInvisible" type="password" class="form-control" v-model="body.password" placeholder="Change password">
+        </b-row>
+        <b-row>
+            <div class="col">
+              <b-form-input v-if="!isInvisible" type="password" class="form-control" v-model="body.password" placeholder="Change password"></b-form-input>
             </div>
-        </div>
+        </b-row>
         <div style="padding:5em">
         <b-button v-if="!isInvisible" @click="updateFreelancer()">Save changes</b-button>
         </div>
-    </div>
+    </b-container>
 </template>
+
+<style scoped>
+
+.form-control {
+  width:23em;
+}
+.col {
+  margin-top: 40px;
+  justify-content: center;
+  display: flex;
+}
+
+#resume_button {
+  width: 130px;
+  height: 40px;
+  padding: 10px;
+  background-color: rgb(169, 162, 162);
+}
+#edit_button {
+  margin-left: 8px;
+}
+
+.card {
+  height: 26rem;
+  width: 90%;
+  background-color: #eceff2;
+  padding: 10px;
+  margin-top: 40px;
+  margin-left: 80px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  position: relative;
+  text-align: center;
+  }
+
+img {
+  border-radius: 50%;
+  height: 120px;
+  width: 120px;
+}
+
+p {
+  padding: 20px;
+}
+
+@media screen and (max-width: 768px) {
+
+.card {
+    width: 300px;
+    margin-left: 20px;
+    height: 37rem;
+  }
+#edit_button {
+  margin-top: 20px;
+}
+#resume_button {
+   margin-top: 5px
+}
+.col {
+  width: 200px;
+}
+}
+
+</style>
 
 <script>
 import FreelancersOps from './FreelancersOps'

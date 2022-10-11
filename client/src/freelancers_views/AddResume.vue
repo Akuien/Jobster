@@ -1,5 +1,5 @@
 <template>
-  <div class="form">
+  <b-container>
     <div>
       <h1>Create resume</h1>
       <div class="section">
@@ -24,7 +24,7 @@
 
         <input type="submit" value="Create Resume" @click="createResume()">
       </div>
-    </div>
+  </b-container>
 </template>
 
 <script>
