@@ -35,6 +35,10 @@ class FreelancersOps {
   createResume(id, body) {
     return Api.post('/freelancers/' + id + '/resumes', body)
   }
+
+  deleteResume(freelancerId, resumeId) {
+    return Api.delete('/freelancers/' + freelancerId + '/resumes/' + resumeId)
+  }
 }
 
 export default new FreelancersOps()

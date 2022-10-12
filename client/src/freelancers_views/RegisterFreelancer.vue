@@ -120,6 +120,7 @@ export default {
         })
         .catch(error => {
           this.$toasted.show(error)
+          this.$toasted.show('Please enter all the fields!')
         })
     }
   }
