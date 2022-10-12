@@ -78,9 +78,7 @@ router.patch('/freelancers/:id', async (request, response) => {
 
     try {
 
-        const updateFreelancer = await FreelancerModel.findByIdAndUpdate(id, body, {
-            runValidators: true
-        });
+        const updateFreelancer = await FreelancerModel.findByIdAndUpdate(id, body);
     
         response.json(updateFreelancer);
      } catch (error) {
@@ -116,6 +114,7 @@ router.post('/freelancers/:id/resumes', async (request, response) => {
             skills_field: request.body.skills_field,
             freelancer: id
         })
+        
 
         const createdResume = await createResume.save();
 
@@ -129,8 +128,9 @@ router.post('/freelancers/:id/resumes', async (request, response) => {
         });
             
     } catch (error) {
-
-        response.status(500).json({ message: error.message });
+        
+        
+        response.status(400).json({ message: 'Please fill all the fields' });
     }
 
 });
