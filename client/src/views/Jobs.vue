@@ -32,7 +32,6 @@ export default {
 
   mounted() {
     this.getJobs()
-    // this.getJobPost(this.$route.params.id)
   },
   data() {
     return {
