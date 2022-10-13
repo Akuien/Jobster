@@ -1,5 +1,5 @@
 <template>
-    <b-container>
+    <b-container fluid="md">
         <div v-for="resume in resumes" v-bind:key="resume._id">
             <b-card id="card">
               <h4>Experience: </h4>
@@ -95,7 +95,7 @@ h4 {
 @media screen and (max-width: 768px) {
   #card {
     max-height: 70rem;
-    width: 20rem;
+    width: 95%;
     margin-left: 10px;
   }
   #add_button {
