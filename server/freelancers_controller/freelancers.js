@@ -78,11 +78,37 @@ router.patch('/freelancers/:id', async (request, response) => {
 
     try {
 
-        const updateFreelancer = await FreelancerModel.findByIdAndUpdate(id, body, {
-            runValidators: true
-        });
+        const updateFreelancer = await FreelancerModel.findByIdAndUpdate(id, body);
     
         response.json(updateFreelancer);
+     } catch (error) {
+         response.status(500).json({ message: error.message });
+     };
+});
+
+
+router.put('/freelancers/:id', async (request, response) => {
+
+    const id = request.params.id;
+
+    try {
+        FreelancerModel.findById(id, function(err, freelancer) {
+            if (err) { response.status(409).json({'message': 'freelancer update failed!', 'error': err}); }
+            if (freelancer === null) {
+                return response.status(404).json({'message': 'Freelancer not found'});
+            }
+            freelancer.first_name = request.body.first_name;
+            freelancer.last_name = request.body.last_name;
+            freelancer.email_address = request.body.email_address;
+            freelancer.phone_number = request.body.phone_number;
+            freelancer.description = request.body.description;
+            freelancer.resume = request.body.resume;
+            freelancer.password = request.body.password;
+    
+            freelancer.save();
+            response.json(freelancer);
+        });
+
      } catch (error) {
          response.status(500).json({ message: error.message });
      };
@@ -116,6 +142,7 @@ router.post('/freelancers/:id/resumes', async (request, response) => {
             skills_field: request.body.skills_field,
             freelancer: id
         })
+        
 
         const createdResume = await createResume.save();
 
@@ -129,8 +156,9 @@ router.post('/freelancers/:id/resumes', async (request, response) => {
         });
             
     } catch (error) {
-
-        response.status(500).json({ message: error.message });
+        
+        
+        response.status(400).json({ message: 'Please fill all the fields' });
     }
 
 });
@@ -211,6 +239,22 @@ router.get('/freelancers?skills_field=JavaScript', async (request, response) => 
     }
 
 
+});
+
+
+//Get freelancer filter by first name
+router.get('/freelancers', function(req, res, next) {   
+    if (!req.query.first_name){return next();}
+    FreelancerModel.find({
+        first_name: { $regex: req.query.first_name, $options: 'i' }
+    },
+        function(err, freelancers) {
+            if (err) { return next(err); }
+            if (!freelancers) { return res.status(404).json(
+                {'message': 'no freelancer found'});
+            }
+        res.status(200).json(freelancers);
+    });
 });
 
 router.get('/freelancers/:id/job_posts/:id', function (request, response, next) {

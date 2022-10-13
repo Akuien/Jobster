@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const ResumeSchema = new Schema({
     education_field: { type: String, required: true },
     experience_field: { type: String, required: true },
-    skills_field: { type: String, required: true },
+    skills_field: [{ type: String, required: true }],
     freelancer: { type: mongoose.Schema.Types.ObjectId, ref: 'Freelancer', required: true},
     
 });

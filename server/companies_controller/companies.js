@@ -78,7 +78,7 @@ router.patch('/companies/:id', function(req, res, next) {
 router.delete('/companies/:id', function(req, res) {
     var id = req.params.id;
 
-    Company.findOneAndDelete({_id: id}, function(err, company) {
+    Company.findOneAndDelete({"_id": id}, function(err, company) {
         if (err) { return next(err); }
         if (company === null) {
             return res.status(404).json({'message': 'Company not found'});
@@ -88,9 +88,9 @@ router.delete('/companies/:id', function(req, res) {
 });
 
 
-//Entities relationship operations
+/*/Entities relationship operations
 //add a job post to a company
-router.post('/companies:id/job_posts', function(req, res){
+router.post('/companies/:id/job_posts/add', function(req, res){
     var id = req.params.id;
     var jobPostId = req.body.JobPost;
     Company.findById(id, function(err, company) {
@@ -124,31 +124,62 @@ router.post('/companies:id/job_posts', function(req, res){
         company.save();
         res.json(company);
     });
+}); 
+*/
+
+router.post('/companies/:id/job_posts', async (request, response) => {
+    const id = request.params.id;
+    const job_post = request.body.job_posts;
+
+
+    try {
+
+        const createJobPost = await JobPost.create({
+            
+            job_title: request.body.job_title,
+            deadline: request.body.deadline,
+            post_date: request.body.post_date,
+            description: request.body.description,
+            company: id
+        })
+
+        const createdJob = await createJobPost.save();
+
+        
+        Company.findByIdAndUpdate({ "_id": id }, { $push: { job_post: createdJob } }, { safe: true, upsert: true }, function (error, job_post) {
+            if (error) {
+                response.send(error);
+            } else {
+                response.json(job_post);
+            }
+        });
+            
+    } catch (error) {
+
+        response.status(500).json({ message: error.message });
+    }
+
 });
 
 
-//Get company's job posts
-router.get('/companies/:id/job_posts', function(req, res){
-    var id = req.params.id;
 
-    Company.findById(id, function(err, company) {
-        if (err) {return res.status(404).json({'message': 'company unavailable', 'error': err});
-        }
+router.get('/companies/:id/job_posts', async (request, response) => {
 
-        if (company === null) {
-            return res.status(404).json({'message': 'company not found'});
-        }
+    const id = request.params.id;
 
-        var companyJobPosts = [];        
-        for (let index = 0; index < company.job_posts.length; index++) {            
-            companyJobPosts[index] = company.job_posts[index];                    
-        } 
+    try {
 
-
-
-        res.json({'company': company.company_name, 'job_posts' : companyJobPosts });
-    });
-
+            JobPost.find({ "company": id}, function (error, job_posts) {
+                if (error) {
+                    response.send(error);
+                } else {
+                    response.json(job_posts);
+                }
+            })
+    }
+    catch (error) {
+        response.status(500).json({ message: error.message });
+    }
 });
 
 
