@@ -234,7 +234,7 @@ router.delete('/companies/:id/job_posts/:id', async (request, response) => {
     try {
 
         JobPost
-            .findByIdAndRemove({ "_id": id })
+            .findOneAndDelete(id)
             .then(function (error, job_post) {
                 if (error) {
                     response.send(error);

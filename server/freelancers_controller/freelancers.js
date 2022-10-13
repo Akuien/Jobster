@@ -210,7 +210,7 @@ router.delete('/freelancers/:id/resumes/:id', async (request, response) => {
     try {
 
         ResumeModel
-            .findByIdAndRemove({ "_id": id })
+            .findOneAndDelete(id)
             .then(function (error, delResume) {
                 if (error) {
                     response.send(error);
