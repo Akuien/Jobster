@@ -185,29 +185,23 @@ router.get('/companies/:id/job_posts', async (request, response) => {
 
 
 //Get a specific company's job post using an id.
-router.get('/companies/:id/job_posts/:id', function(req, res){
+router.get('/companies/:id/job_posts/:id', async (request, response) => {
 
-    var id = req.params.id;
-    var jobPostId = req.params.job_posts;
+    const id = request.params.id;
 
-    //Find the company
-    Company.findById(id, function(err, company) {
-        if (err) {  return res.status(404).json({'message': 'company not found', 'error': err}); }
-        if (company === null) {
-            return res.status(404).json({'message': 'company does not exists'});
-        }
+    try {
 
-        //Find the job post
-        JobPost.findById(jobPostId, function(err, job_post) {
-            if (err) { return res.status(404).json({'message': 'job_post not found', 'error': err}); }
-            if (job_post === null) {
-                return res.status(404).json({'message': 'The company specified does not have any job post of such id'});
-            }
-
-
-            res.json({'company': company.company_name, 'job' : job_post});
-        });
-    });
+        JobPost
+            .findOne({ "_id": id }, function (error, job_post) {
+                if (error) {
+                    response.send(error);
+                }
+                response.json(job_post);
+            })
+    }
+    catch (error) {
+        response.status(500).json({ message: error.message });
+    }
 });
 
 
@@ -233,32 +227,33 @@ router.delete('/companies/:id/job_posts', function(req, res) {
 
 
 //Delete a specific job post from a company
-router.delete('/companies/:id/job_posts/:id', function(req, res) {
-    var id = req.params.id;
-    var jobPostId = req.params.jobPostId;
+router.delete('/companies/:id/job_posts/:id', async (request, response) => {
 
-    Company.findById(id, function(err, company) {
-        if (err) {  return res.status(404).json({'message': 'company not found'}); }
+    const id = request.params.id;
+  
+    try {
 
-        if (company === null) {
-            return res.status(404).json({'message': 'company do not exists'});
-        }
-
-        try{ let index = company.job_posts.indexOf(jobPostId);
-            company.job_posts.splice(index, 1);
-
-            company.save();
-            res.json(company.job_posts);}
-
-        catch(err){
-            return res.status(404).json({'message': 'job post id is not found'});
-        }
-
-    });
+        JobPost
+            .findByIdAndRemove({ "_id": id })
+            .then(function (error, job_post) {
+                if (error) {
+                    response.send(error);
+                }
+                response.json(job_post);
+            });
+    
+    } catch (error) {
+        response.status(500).json({ message: error.message });
+    }
 });
 
 
 //======================================================================
+/*
+router.delete('/companies/:id/job_posts/:id', function(req, res)
+router.delete('/freelancers/:id/resumes/:id', async (request, response)
+get resume by
+ */
 
 
 
