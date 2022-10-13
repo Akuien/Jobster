@@ -1,7 +1,8 @@
 <template>
     <b-row>
         <div v-for="freelancer in freelancers" v-bind:key="freelancer._id">
-            <b-card class="card">
+          <b-col fluid="md">
+            <b-card id="card">
               <img src="https://bodhicounseling.com/wp-content/uploads/2018/05/blank-profile-picture-973460_960_720-150x150.png" alt="profile_pic" />
               <h5 class="first_name">{{freelancer.first_name}} {{freelancer.last_name}}</h5>
               <b-card-text class="card_text">{{freelancer.description}}</b-card-text>
@@ -10,6 +11,7 @@
                 <b-button class="delete_button" @click="deleteFreelancer(freelancer._id)">Delete</b-button>
               </div>
             </b-card>
+          </b-col>
         </div>
     </b-row>
 </template>
@@ -38,19 +40,19 @@
   .button_container {
     padding: 10px;
   }
-  .card {
-  height: 23rem;
-  width: 20rem;
-  background-color: #eceff2;
-  padding: 10px;
-  margin-top: 40px;
-  margin-left: 80px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  box-shadow: 0px 8px 15px -7px gray;
-  position: relative;
-  text-align: center;
-  transition: ease-in-out 0.35s;
+  #card {
+    height: 23rem;
+    width: 20rem;
+    background-color: #eceff2;
+    padding: 10px;
+    margin-top: 40px;
+    margin-left: 50px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 8px 15px -7px gray;
+    position: relative;
+    text-align: center;
+    transition: ease-in-out 0.35s;
   }
   .card:hover{
      transform: scale(1.10);
