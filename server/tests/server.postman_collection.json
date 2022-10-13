@@ -1546,7 +1546,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"description\": \"IoT expert with at least 3 years experience\",\r\n    \"job_title\": \" Senior IoT engineering\"\r\n}",
+					"raw": "{\r\n    \"description\": \"IoT expert with at least 3 years experience\",\r\n    \"job_title\": \" Junior IoT engineering\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1604,7 +1604,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "633c7d1f47a592537ccf724f"
+							"value": "6345dbacb6dbf43258f2c1a1"
 						}
 					]
 				}
@@ -1694,18 +1694,10 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "6345e5a0b134692c2411a75e"
+							"value": "63480f27e02ed57088fc02f9"
 						}
 					]
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "Apply job",
-			"request": {
-				"method": "GET",
-				"header": []
 			},
 			"response": []
 		},
