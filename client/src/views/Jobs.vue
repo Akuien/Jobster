@@ -10,6 +10,7 @@
   </b-navbar>
 </div>
 <div>
+  <b-button id="delete_jobs_button" @click="deleteJobs()">Delete Jobs</b-button>
    <b-row>
         <div v-for="job_post in job_posts" v-bind:key="job_post._id">
             <b-card style="height: 20rem;width: 20rem; background-color: lightgrey; padding: 80px; margin-top: 20px; margin-left: 50px; margin-bottom: 20px; position:relative">
@@ -23,6 +24,13 @@
 
 </div>
 </template>
+
+<style scoped>
+  #delete_jobs_button {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+</style>
 
 <script>
 import { Api } from '@/Api'
@@ -56,16 +64,17 @@ export default {
         .catch(error => {
           console.log(error)
         })
+    },
+    deleteJobs() {
+      Api.delete('/job_posts')
+        .then(() => {
+          this.$toasted.show('Job posts successfully deleted!')
+        })
+        .catch(error => {
+          this.$toasted.show(error)
+          this.$toasted.show('Could not delete all job posts')
+        })
     }
-    // getJobPost(id) {
-    //   Api.get('/job_posts/' + id)
-    //     .then(response => {
-    //       this.jobPost = response.data
-    //     })
-    //     .catch(error => {
-    //       this.$toasted.show(error)
-    //     })
-    // }
   }
 }
 </script>
