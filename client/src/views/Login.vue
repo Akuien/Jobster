@@ -1,17 +1,17 @@
 <template>
-  <div class="form">
+  <div>
     <form action="/">
       <h1>Log in</h1>
       <div id="form">
-        <b-col>
-          <b-form-input type="email" class="form-control" id="email" placeholder="E-mail"></b-form-input>
-        </b-col>
+        <div class= "mt-2">
+          <input type="email" class="mt-3" id="email" placeholder="E-mail">
+        </div>
 
-        <b-col>
-          <b-form-input type="password" class="form-control" id="pwd" placeholder="Password"></b-form-input>
-        </b-col>
-          <b-button class="btn_message" variant="primary" v-on:click="getData()">Log in</b-button>
+        <div class= "mt-2">
+          <input type="password" class="mt-3" id="pwd" placeholder="Password">
+        </div>
       </div>
+      <b-button class="btn_message" variant="primary" v-on:click="getData()" >Log in</b-button>
     </form>
   </div>
 </template>
