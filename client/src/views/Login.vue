@@ -3,19 +3,45 @@
     <form action="/">
       <h1>Log in</h1>
       <div id="form">
-        <div class="form-group">
-          <input type="email" class="form-control" id="email" placeholder="E-mail">
-        </div>
+        <b-col>
+          <b-form-input type="email" class="form-control" id="email" placeholder="E-mail"></b-form-input>
+        </b-col>
 
-        <div class="form-group">
-          <input type="password" class="form-control" id="pwd" placeholder="Password">
-        </div>
-
-        <b-button class="btn_message" variant="primary" v-on:click="getData()" >Log in</b-button>
+        <b-col>
+          <b-form-input type="password" class="form-control" id="pwd" placeholder="Password"></b-form-input>
+        </b-col>
+          <b-button class="btn_message" variant="primary" v-on:click="getData()">Log in</b-button>
       </div>
     </form>
   </div>
 </template>
+
+<style scoped>
+ .form-control {
+    width: 25rem;
+ }
+
+ .col {
+  margin-top: 30px;
+  justify-content: center;
+  display: flex;
+}
+
+.btn_message {
+  width: 20rem;
+  margin-top: 2rem;
+}
+
+ @media screen and (max-width: 768px) {
+   .form-control {
+    width: 20rem;
+    }
+    .btn_message {
+      width: 20rem;
+      margin-top: 2rem;
+    }
+ }
+</style>
 
 <script>
 export default {

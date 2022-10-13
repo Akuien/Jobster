@@ -11,7 +11,6 @@
         <b-nav-item href="#"><router-link class="nav-link" to="/jobs">Jobs</router-link></b-nav-item>
         <b-nav-item href="#"><router-link class="nav-link" to="/freelancers">Freelancers</router-link></b-nav-item>
         <b-nav-item href="#"><router-link class="nav-link" to="/companies">Companies</router-link></b-nav-item>
-        <b-nav-item href="#"><router-link class="nav-link" to="/About">About</router-link></b-nav-item>
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->
