@@ -11,7 +11,9 @@
           <input type="password" class="mt-3" id="pwd" placeholder="Password">
         </div>
       </div>
-      <b-button class="btn_message" variant="primary" v-on:click="getData()" >Log in</b-button>
+      <div>
+      <b-button class="pb-2" variant="primary" v-on:click="getData()" >Log in</b-button>
+      </div>
     </form>
   </div>
 </template>
