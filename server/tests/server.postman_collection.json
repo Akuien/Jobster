@@ -163,7 +163,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "633c96508d45dc2e507dd6f9"
+							"value": "63274fa1ac99883ad0a016a7"
 						}
 					]
 				}
@@ -713,15 +713,15 @@
 					],
 					"query": [
 						{
-							"key": "id",
-							"value": "633c5501eecc40547050332f",
+							"key": "",
+							"value": "",
 							"disabled": true
 						}
 					],
 					"variable": [
 						{
 							"key": "id",
-							"value": "633c5501eecc40547050332f"
+							"value": "632e2a906f003d21a4ad5714"
 						}
 					]
 				}
@@ -821,28 +821,16 @@
 					"file": {}
 				},
 				"url": {
-					"raw": "{{host}}/api/freelancers/:id/resumes/:id?=633c9c9d7875db1be02a3f6c",
+					"raw": "{{host}}/api/freelancers/632e2a906f003d21a4ad5714/resumes/6346d0268229c376b01c95a0",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
 						"freelancers",
-						":id",
+						"632e2a906f003d21a4ad5714",
 						"resumes",
-						":id"
-					],
-					"query": [
-						{
-							"key": "",
-							"value": "633c9c9d7875db1be02a3f6c"
-						}
-					],
-					"variable": [
-						{
-							"key": "id",
-							"value": "633c5501eecc40547050332f"
-						}
+						"6346d0268229c376b01c95a0"
 					]
 				}
 			},
@@ -864,31 +852,32 @@
 			"request": {
 				"method": "DELETE",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"_id\": \"6346e57f8229c376b01c95ed\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "{{host}}/api//freelancers/:id/resumes/:id",
+					"raw": "{{host}}/api/freelancers/633c5501eecc40547050332f/resumes/633ccce041bce106c06ecffa",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
-						"",
 						"freelancers",
-						":id",
+						"633c5501eecc40547050332f",
 						"resumes",
-						":id"
+						"633ccce041bce106c06ecffa"
 					],
 					"query": [
 						{
 							"key": "_id",
-							"value": "632b552818fe8a2f285a0ad9",
+							"value": "",
 							"disabled": true
-						}
-					],
-					"variable": [
-						{
-							"key": "id",
-							"value": "632b552818fe8a2f285a0ad9",
-							"type": "string"
 						}
 					]
 				}
@@ -1187,7 +1176,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "633cd6da3aac8210606c6b6d"
+							"value": "6331df82a074c44348096225"
 						}
 					]
 				}
@@ -1357,7 +1346,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "63303adbdae2b5089cc3d620"
+							"value": "6331df82a074c44348096225"
 						}
 					]
 				}
@@ -1707,6 +1696,63 @@
 							"key": "id",
 							"value": "6345e5a0b134692c2411a75e"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Apply job",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a specific job post through a company",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/companies/633cd6da3aac8210606c6b6d/job_posts/633db0f97c3e574f1872191b",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"companies",
+						"633cd6da3aac8210606c6b6d",
+						"job_posts",
+						"633db0f97c3e574f1872191b"
+					],
+					"query": [
+						{
+							"key": null,
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get specific  job post via specific company",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/companies/6331df82a074c44348096225/job_posts/6331ee9f9d56c34310d372ff",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"companies",
+						"6331df82a074c44348096225",
+						"job_posts",
+						"6331ee9f9d56c34310d372ff"
 					]
 				}
 			},

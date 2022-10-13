@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 
 //var Company = require("../models/company");
 var JobPost = require('../models/job_post');
+var Freelancer = require('../models/freelancer');
 
 
 
@@ -165,6 +166,42 @@ router.delete('/job_posts', function(req, res) {
         res.json(job_posts);
     });
 });
+/*
+router.post('/job_posts/:id/apply', function(req, res){
+    var id = req.params.id;
+    var freelancerId = req.body.Freelancer;
+    JobPost.findById(id, function(err, job_post) {
+        if (err) { 
+            return res.status(409).json({'message': 'No job post with such id exists!', 'error': err});
+        }
+
+        if (job_post === null) {
+            return res.status(404).json({'message': 'job post not found'});
+        }
+
+        if (freelancerId === null) {
+            return res.status(404).json({'message': 'freelancer not found'});
+        }
+
+        if(job_post.applicants.includes(freelancerId)){
+            return res.status(409).json({'message': 'freelancer has already applied'});
+        }  
+
+        try{
+            job_post.applicants.push(freelancer);
+
+        }
+
+        catch(err) {
+            return res.status(409).json({'message': err});
+        }
+
+
+
+        job_post.save();
+        res.json(job_post);
+    });
+}); */
 
 
 
