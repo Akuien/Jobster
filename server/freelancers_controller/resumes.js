@@ -2,6 +2,19 @@ var express = require('express');
 var router = express.Router();
 var Resume = require('../models/resume')
 
+router.delete('/resumes', function (response) {
+
+    try {
+        Resume.deleteMany({}, function (error) {
+            if (error) {
+                response.send(error);
+            } else {
+                response.json({ "message": "Successfully deleted!" });
+            }
+        })
+    } catch (error) {
+        response.status(500).json({ message: error.message});    }
+})
 
 // Create Resume
 router.post('/resumes', function(req, res, next){

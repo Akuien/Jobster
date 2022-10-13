@@ -16,6 +16,33 @@
   </div>
 </template>
 
+<style scoped>
+ .form-control {
+    width: 25rem;
+ }
+
+ .col {
+  margin-top: 30px;
+  justify-content: center;
+  display: flex;
+}
+
+.btn_message {
+  width: 20rem;
+  margin-top: 2rem;
+}
+
+ @media screen and (max-width: 768px) {
+   .form-control {
+    width: 20rem;
+    }
+    .btn_message {
+      width: 20rem;
+      margin-top: 2rem;
+    }
+ }
+</style>
+
 <script>
 export default {
   name: 'login',

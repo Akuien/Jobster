@@ -1,7 +1,7 @@
 <template>
-    <b-container>
+    <b-container fluid="md">
         <div v-for="attribute in freelancer" v-bind:key="attribute._id">
-          <b-card class="card">
+          <b-card id="card">
           <img src="https://bodhicounseling.com/wp-content/uploads/2018/05/blank-profile-picture-973460_960_720-150x150.png" alt="profile_pic" />
           <h1>{{attribute.first_name}} {{attribute.last_name}}</h1>
           <h4>{{attribute.email_address}}</h4>
@@ -11,34 +11,34 @@
           </b-card>
         </div>
         <b-row>
-          <div class="col">
+          <b-col>
             <b-form-input v-if="!isInvisible" type="text" class="form-control" v-model="body.first_name" placeholder="Change First Name"></b-form-input>
-          </div>
+          </b-col>
         </b-row>
         <b-row>
-          <div class="col">
+          <b-col>
             <b-form-input v-if="!isInvisible" type="text" class="form-control" v-model="body.last_name" placeholder="Change Last Name"></b-form-input>
-          </div>
+          </b-col>
         </b-row>
         <b-row>
-            <div class="col">
+            <b-col>
               <b-form-textarea rows="5" max-rows="8" maxlength="80" v-if="!isInvisible" type="text" class="form-control" v-model="body.description" placeholder="Change description"></b-form-textarea>
-            </div>
+            </b-col>
         </b-row>
         <b-row>
-            <div class="col">
+            <b-col>
               <b-form-input v-if="!isInvisible" type="text" class="form-control" v-model="body.email_address" placeholder="Change email address"></b-form-input>
-            </div>
+            </b-col>
         </b-row>
         <b-row>
-            <div class="col">
+            <b-col>
               <b-form-input v-if="!isInvisible" type="text" class="form-control" v-model="body.phone_number" placeholder="Change phone number"></b-form-input>
-            </div>
+            </b-col>
         </b-row>
         <b-row>
-            <div class="col">
+            <b-col>
               <b-form-input v-if="!isInvisible" type="password" class="form-control" v-model="body.password" placeholder="Change password"></b-form-input>
-            </div>
+            </b-col>
         </b-row>
         <div style="padding:5em">
         <b-button v-if="!isInvisible" @click="updateFreelancer()">Save changes</b-button>
@@ -52,7 +52,7 @@
   width:23em;
 }
 .col {
-  margin-top: 40px;
+  margin-top: 30px;
   justify-content: center;
   display: flex;
 }
@@ -92,13 +92,13 @@ p {
 
 @media screen and (max-width: 768px) {
 
-.card {
-    width: 300px;
+#card {
+    width: 90%;
     margin-left: 20px;
-    height: 37rem;
+    max-height: 35rem;
   }
 #edit_button {
-  margin-top: 20px;
+  margin-top: 5px;
 }
 #resume_button {
    margin-top: 5px
