@@ -8,6 +8,7 @@ var Freelancer = require('../models/freelancer');
 
 
 
+
 //Create new jobPost
 router.post('/job_posts', function(req, res, next){
     var newJobPost = new JobPost(req.body);
@@ -103,24 +104,27 @@ router.get('/job_postsPagination', function(req, res, next) {
 
 
 //Replaces a job post by id.
-router.put('/job_posts/:id', function (req, res) {
+router.put('/job_posts/:id', async (req, res) => {
+
     try {
         const id = req.params.id;
+
         JobPost.findById(id, function(err, job_post) {
             if (err) { res.status(409).json({'message': 'job_post update failed!', 'error': err}); }
             if (job_post === null) {
                 return res.status(404).json({'message': 'job_post not found'});
             }
-            job_post.id = mongoose.Types.ObjectId();
+
             job_post.job_title = req.body.job_title;
             job_post.deadline = req.body.deadline;
             job_post.post_date = req.body.post_date;
             job_post.description = req.body.description;
+            job_post.company = job_post.company;
     
             job_post.save();
             res.json(job_post);
+            
         });
-
     } catch (error) {
         response.status(400).json({ message: error.message });
     }

@@ -112,7 +112,8 @@ export default {
         job_title: this.job_title,
         deadline: this.deadline,
         description: this.description,
-        post_date: this.post_date
+        post_date: this.post_date,
+        company: this.company
       }
     }
   },
@@ -127,10 +128,14 @@ export default {
         })
     },
     updateJobPost() {
-       Api.put('/job_posts/' + this.$route.params.id, this.body)
-        .then(() => {
-          this.$toasted.show('Job has been successfully updated!')
-          window.location.reload()
+      Api.put('/job_posts/' + this.$route.params.id, this.body)
+        .then((response) => {
+          if (response.job_title == null || response.deadline == null || response.post_date == null || response.description == null) {
+              this.$toasted.show('Please enter all the fields!')
+          } else {
+              this.$toasted.show('Job has been successfully updated!')
+              window.location.reload()
+          }
         })
         .catch(error => {
           this.$toasted.show(error)
