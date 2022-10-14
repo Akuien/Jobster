@@ -6,7 +6,7 @@
               <img src="https://visaguideinfo.com/wp-content/uploads/2020/02/0.jpg" class="card-img-top" alt="company_pic">
               <div class="card-body">
                 <h2 class="card-title">{{job.job_title}}</h2>
-                <p class="card-text">{{job.post_date}}</p>
+                <p class="card-text"> Post date: {{job.post_date.substring(0,10)}}</p>
                 <b-button class="read_more" style="background-color: grey;" :href="'/job_posts/' + job._id">Read more</b-button>
               </div>
             </div>
