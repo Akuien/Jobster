@@ -39,10 +39,10 @@ app.use(morgan('dev'));
 app.options('*', cors());
 app.use(cors());
 
-// Import routes
+/*/ Import routes
 app.get('/api', function(req, res) {
     res.json({'message': 'Welcome to your DIT342 backend ExpressJS project!'});
-}); 
+}); */
 
 
 const companiesRoutes = require('../server/companies_controller/companies');
