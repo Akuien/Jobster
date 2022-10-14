@@ -1,10 +1,16 @@
 <template>
     <b-row>
         <div v-for="job in jobs" v-bind:key="job._id">
-          <b-card style="height: 20rem;width: 20rem; background-color: lightgrey; padding: 80px; margin-top: 20px; margin-left: 50px; margin-bottom: 20px; position:relative">
-                <h1>{{job.job_title}}</h1>
-                <b-card-text>{{job.description}}</b-card-text>
-          </b-card>
+          <b-col fluid="md">
+            <div class="card">
+              <img src="https://visaguideinfo.com/wp-content/uploads/2020/02/0.jpg" class="card-img-top" alt="company_pic">
+              <div class="card-body">
+                <h2 class="card-title">{{job.job_title}}</h2>
+                <p class="card-text">{{job.post_date}}</p>
+                <b-button class="read_more" style="background-color: grey;" :href="'/job_posts/' + job._id">Read more</b-button>
+              </div>
+            </div>
+          </b-col>
         </div>
     </b-row>
 </template>
@@ -35,3 +41,45 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  img {
+    height: 12rem;
+    width: 100%;
+  }
+    .card {
+    height: 23rem;
+    width: 20rem;
+    background-color: #d5d7e0;
+    color: rgb(75, 71, 71);
+    margin-top: 40px;
+    margin-left: 50px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 8px 15px -7px gray;
+    position: relative;
+    text-align: center;
+    transition: ease-in-out 0.35s;
+}
+.card_text {
+  font-size: 15px;
+  line-height: 21px;
+  color: #4D648D;
+  margin-top: 20px;
+}
+ .card:hover {
+     transform: scale(1.10);
+     box-shadow: 10px 10px 15px -7px gray;
+  }
+   @media screen and (max-width: 768px) {
+   .card {
+     margin-left: 10%;
+    }
+ }
+ .read_more {
+  background-color: rgb(125, 92, 175);
+}
+.read_more:hover {
+    background-color: rgb(123, 77, 192);
+}
+</style>

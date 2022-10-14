@@ -6,7 +6,7 @@
               <img src="https://jooinn.com/images/buildings-36.jpg" class="card-img-top" alt="company_pic">
               <div class="card-body">
                 <h2 class="card-title">{{company.company_name}}</h2>
-                <p class="card-text">{{company.company_description}}</p>
+                <p class="card-text">{{company.company_email}}</p>
                 <b-button class="read_more" :href="'/companies/' + company._id">Read more</b-button>
               </div>
             </div>
