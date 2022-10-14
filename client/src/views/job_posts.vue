@@ -127,7 +127,7 @@ export default {
         })
     },
     updateJobPost() {
-       Api.put('/job_posts/' + this.$route.params.id, this.body)
+      Api.put('/job_posts/' + this.$route.params.id, this.body)
         .then(() => {
           this.$toasted.show('Job has been successfully updated!')
           window.location.reload()
