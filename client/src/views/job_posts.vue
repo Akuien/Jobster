@@ -4,83 +4,53 @@
         <b-card id="card">
         <h1><p>{{attribute.job_title}}</p></h1>
         <b-card-text class="card_text">{{attribute.description}}</b-card-text>
-        <b-card-text class="card_text">{{attribute.post_date}}</b-card-text>
-        <b-card-text class="card_text">{{attribute.deadline}}</b-card-text>
+        <b-card-text class="card_text">Post date: {{attribute.post_date.substring(0,10)}}</b-card-text>
+        <b-card-text class="card_text">Display Until: {{attribute.deadline.substring(0,10)}}</b-card-text>
         <b-card-text>
-
           <button type="button" class="btn btn-primary" @click="apply">Apply</button>
         </b-card-text>
          </b-card>
+         <button type="button" class="btn btn-primary" v-on:click="isInvisible = !isInvisible">Rewrite job</button>
+         <b-row>
+          <b-col>
+            <b-form-input v-if="!isInvisible" type="text" class="form-control" v-model="body.job_title" placeholder="Change job title"></b-form-input>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col>
+            <b-form-input v-if="!isInvisible" type="text" class="form-control" v-model="body.deadline" placeholder="Enter the job deadline, in YYYY-MM-DD format"></b-form-input>
+          </b-col>
+        </b-row>
+        <b-row>
+            <b-col>
+              <b-form-textarea rows="5" max-rows="8" v-if="!isInvisible" type="text" class="form-control" v-model="body.description" placeholder="Change description"></b-form-textarea>
+            </b-col>
+        </b-row>
+        <b-row>
+            <b-col>
+              <b-form-input v-if="!isInvisible" type="text" class="form-control" v-model="body.post_date" placeholder="Enter the post date, in YYYY-MM-DD format"></b-form-input>
+            </b-col>
+        </b-row>
+        <div style="padding:5em">
+        <b-button id="save_button" v-if="!isInvisible" @click="updateJobPost()">Save changes</b-button>
+        </div>
       </div>
     </b-container>
 </template>
 
-<style>
-#job_post {
-  margin-top: 10%;
-  padding: 2em;
-}
-
-h1 {
-  font-size: 5em;
-}
-
-p {
-  font-size: 1.25em;
-}
-</style>
-
-<script>
-import { Api } from '@/Api'
-
-export default {
-  name: 'job_post',
-
-  mounted() {
-    this.getJobPost(this.$route.params.id)
-  },
-  data() {
-    return {
-      job_post: null,
-      body: {
-        job_title: this.job_title,
-        job_description: this.job_description,
-        post_date: this.post_date
-      }
-    }
-  },
-  methods: {
-    getJobPost(id) {
-      Api.get('/job_posts/' + id)
-        .then(response => {
-          this.job_post = response.data
-        })
-        .catch(error => {
-          console.log(error)
-        })
-    },
-
-    apply() {
-      alert('Applied succesfully')
-      window.location.href = '/jobs'
-    }
-  }
-}
-</script>
-
 <style scoped>
-#tag_container {
-  display: flex;
+
+.col {
+  margin-top: 30px;
   justify-content: center;
-  align-items: center;
-  margin-bottom: 30px;
+  display: flex;
 }
-#tag {
-  border-radius: 30px;
-  background-color: rgb(159, 124, 253);
-  font-size: 12px;
-  margin-left: 4px;
+
+.btn {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
+
 h1 {
   margin-top: 30px;
   margin-bottom: 20px;
@@ -111,20 +81,65 @@ h1 {
 }
 @media screen and (min-width: 768px) {
   #card {
-    max-height: 70rem;
+    max-height: 120rem;
     width: 100%;
     margin-left: 10px;
   }
 }
 @media screen and (max-width: 768px) {
   #card {
-    max-height: 70rem;
+    max-height: 120rem;
     width: 95%;
     margin-left: 10px;
   }
-  #add_button {
-    margin-right: 80px;
-  }
-
 }
 </style>
+
+<script>
+import { Api } from '@/Api'
+
+export default {
+  name: 'job_post',
+
+  mounted() {
+    this.getJobPost(this.$route.params.id)
+  },
+  data() {
+    return {
+      isInvisible: true,
+      job_post: null,
+      body: {
+        job_title: this.job_title,
+        deadline: this.deadline,
+        description: this.description,
+        post_date: this.post_date
+      }
+    }
+  },
+  methods: {
+    getJobPost(id) {
+      Api.get('/job_posts/' + id)
+        .then(response => {
+          this.job_post = response.data
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+    updateJobPost() {
+       Api.put('/job_posts/' + this.$route.params.id, this.body)
+        .then(() => {
+          this.$toasted.show('Job has been successfully updated!')
+          window.location.reload()
+        })
+        .catch(error => {
+          this.$toasted.show(error)
+        })
+    },
+    apply() {
+      alert('Applied succesfully')
+      window.location.href = '/jobs'
+    }
+  }
+}
+</script>

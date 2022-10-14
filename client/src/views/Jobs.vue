@@ -18,7 +18,8 @@
               <img src="https://visaguideinfo.com/wp-content/uploads/2020/02/0.jpg" class="card-img-top" alt="company_pic">
               <div class="card-body">
                 <h2 class="card-title">{{job_post.job_title}}</h2>
-                <p class="card-text">{{job_post.post_date}}</p>
+                <p class="card-text">Post Date: {{job_post.post_date.substring(0,10)}}</p>
+                <p class="card-text">Deadline: {{job_post.deadline.substring(0,10)}}</p>
                 <b-button class="read_more" style="background-color: grey;" :href="'/job_posts/' + job_post._id">Read more</b-button>
               </div>
             </div>
@@ -29,13 +30,6 @@
 
 </div>
 </template>
-
-<style scoped>
-  #delete_jobs_button {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-  }
-</style>
 
 <script>
 import { Api } from '@/Api'
@@ -93,7 +87,7 @@ export default {
     width: 100%;
   }
   .card {
-    height: 23rem;
+    height: 26rem;
     width: 20rem;
     background-color: #d5d7e0;
     color: rgb(75, 71, 71);
@@ -114,13 +108,13 @@ export default {
   margin-top: 20px;
 }
 
- .card:hover {
-     transform: scale(1.10);
-     box-shadow: 10px 10px 15px -7px gray;
-  }
+.card:hover {
+  transform: scale(1.10);
+  box-shadow: 10px 10px 15px -7px gray;
+}
 
 .read_more:hover {
-    background-color: rgb(123, 77, 192);
+  background-color: rgb(123, 77, 192);
 }
  @media screen and (max-width: 768px) {
    .card {
