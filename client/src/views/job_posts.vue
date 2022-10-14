@@ -59,8 +59,8 @@ export default {
     },
 
     apply() {
-      alert("Applied succesfully");
-      window.location.href = "/jobs"
+      alert('Applied succesfully')
+      window.location.href = '/jobs'
     }
   }
 }
