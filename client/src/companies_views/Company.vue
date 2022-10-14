@@ -12,14 +12,16 @@
                     <h4>Description: </h4>
                     <b-card-text>{{attribute.company_description}}</b-card-text>
                     <h4>Contact Details: </h4>
-                    <b-card-text>{{attribute.company_email}}</b-card-text>
-                    <b-card-text>{{attribute.company_phone}}</b-card-text>
+                    <b-card-text>Email: {{attribute.company_email}}</b-card-text>
+                    <b-card-text>Phone: {{attribute.company_phone}}</b-card-text>
                     <h4>Address: </h4>
-                    <b-card-text>{{attribute.company_location}}</b-card-text>
+                    <b-card-text> City: {{attribute.company_location.city}}</b-card-text>
+                    <b-card-text> Country: {{attribute.company_location.country}}</b-card-text>
+                    <b-card-text> Street: {{attribute.company_location.address}}</b-card-text>
                   </b-card-body>
+                  <b-button size="sm" class="jobs_button" :href="'/companies/' + attribute._id + '/job_posts'">Check out jobs</b-button>
                 </b-col>
               </b-row>
-              <b-button  class="pb-2" size="sm" style="background-color: grey;" :href="'/companies/' + attribute._id + '/job_posts'">Check out jobs</b-button>
             </b-card>
         </div>
     </div>
@@ -53,6 +55,10 @@ export default {
 </script>
 
 <style scoped>
+.jobs_button {
+  margin-bottom: 5rem;
+}
+
 h4 {
   margin-top: 30px;
   margin-bottom: 20px;
@@ -63,11 +69,6 @@ h4 {
   line-height: 30px;
   margin-top: 20px;
 }
-#card:hover{
-    transform: scale(1.03);
-    box-shadow: 10px 10px 15px -7px gray;
-    color: black;
-}
 #card {
   max-height: 70rem;
   background-color: #c2cbd8;
@@ -77,22 +78,25 @@ h4 {
   margin-bottom: 20px;
   border-radius: 8px;
   box-shadow: 0px 8px 15px -7px gray;
+  position: relative;
   text-align: center;
-  transition: ease-in-out 0.35s;
 }
+
 @media screen and (min-width: 768px) {
   #card {
     max-height: 70rem;
-    width: 100%;
-    margin-left: 10px;
+    width: 90%;
+    margin-left: 4rem;
+    margin-right: 3rem;
   }
 }
 
 @media screen and (max-width: 768px) {
   #card {
-    max-height: 70rem;
+    max-height: 120rem;
     width: 95%;
     margin-left: 10px;
   }
+
 }
 </style>
