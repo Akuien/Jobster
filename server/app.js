@@ -38,17 +38,18 @@ app.use(morgan('dev'));
 // Enable cross-origin resource sharing for frontend must be registered before api
 app.options('*', cors());
 app.use(cors());
- 
-// Catch all non-error handler for api (i.e., 404 Not Found)
-app.use('/api/*', function (req, res) { 
-    res.status(404).json({ 'message': 'Not Found' });
+
+// Import routes
+app.get('/api', function(req, res) {
+    res.json({'message': 'Welcome to your DIT342 backend ExpressJS project!'});
 });
+
 
 //Import Routes
 const companiesRoutes = require('../server/companies_controller/companies');
 const jobPostRoutes = require('./companies_controller/job_posts')
-const freelancersRoutes = require('./freelancers_controller/freelancers');
-const resumesRoutes = require('./freelancers_controller/resumes');
+ const freelancersRoutes = require('./freelancers_controller/freelancers');
+ const resumesRoutes = require('./freelancers_controller/resumes');
 
 //Use routes
 app.use('/api' , companiesRoutes);
@@ -57,9 +58,9 @@ app.use('/api' , freelancersRoutes);
 app.use('/api' , resumesRoutes);  
 
 
-// Import routes
-app.get('/api', function(req, res) {
-    res.json({'message': 'Welcome to your DIT342 backend ExpressJS project!'});
+// Catch all non-error handler for api (i.e., 404 Not Found)
+app.use('/api/*', function (req, res) { 
+    res.status(404).json({ 'message': 'Not Found' });
 });
 
 // Configuration for serving frontend in production mode
