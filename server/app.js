@@ -38,7 +38,12 @@ app.use(morgan('dev'));
 // Enable cross-origin resource sharing for frontend must be registered before api
 app.options('*', cors());
 app.use(cors());
- 
+
+// Import routes
+app.get('/api', function(req, res) {
+    res.json({'message': 'Welcome to your DIT342 backend ExpressJS project!'});
+});
+
 
 //Import Routes
 const companiesRoutes = require('../server/companies_controller/companies');
@@ -52,11 +57,6 @@ app.use('/api', jobPostRoutes)
 app.use('/api' , freelancersRoutes);    
 app.use('/api' , resumesRoutes);  
 
-
-// Import routes
-app.get('/api', function(req, res) {
-    res.json({'message': 'Welcome to your DIT342 backend ExpressJS project!'});
-});
 
 // Catch all non-error handler for api (i.e., 404 Not Found)
 app.use('/api/*', function (req, res) { 
