@@ -127,15 +127,15 @@ export default {
           console.log(error)
         })
     },
-   updateJobPost() {
+    updateJobPost() {
       Api.put('/job_posts/' + this.$route.params.id, this.body)
-      .then(() => {
-        this.$toasted.show('Job has been successfully updated!')
-        window.location.reload()
-      })
-      .catch(error => {
-        this.$toasted.show(error)
-      })
+        .then(() => {
+          this.$toasted.show('Job has been successfully updated!')
+          window.location.reload()
+        })
+        .catch(error => {
+          this.$toasted.show(error)
+        })
     },
     apply() {
       alert('Applied succesfully')
