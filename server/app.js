@@ -9,9 +9,9 @@ var bodyParser = require('body-parser');
 
 
 // Variables
-var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/webDevDatabase';
+var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/Jobster';
 var port = process.env.PORT || 3000;
-process.env
+
 // Connect to MongoDB
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true }, function(err) {
     if (err) {
