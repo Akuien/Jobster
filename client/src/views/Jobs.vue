@@ -1,34 +1,24 @@
 <template>
-<div>
-
+  <b-container>
   <div>
-  <b-navbar type="light" variant="light">
-    <b-nav-form>
-      <b-form-input class="mr-sm-2" placeholder="Search"></b-form-input>
-      <b-button variant="outline-success" class="my-2 my-sm-0" type="submit">Search</b-button>
-    </b-nav-form>
-  </b-navbar>
-</div>
-<div>
-  <b-button id="delete_jobs_button" @click="deleteJobs()">Delete Jobs</b-button>
-   <b-row>
-        <div v-for="job_post in job_posts" v-bind:key="job_post._id">
-          <b-col fluid="md">
-            <div class="card">
-              <img src="https://visaguideinfo.com/wp-content/uploads/2020/02/0.jpg" class="card-img-top" alt="company_pic">
-              <div class="card-body">
-                <h2 class="card-title">{{job_post.job_title}}</h2>
-                <p class="card-text">Post Date: {{job_post.post_date.substring(0,10)}}</p>
-                <p class="card-text">Deadline: {{job_post.deadline.substring(0,10)}}</p>
-                <b-button class="read_more" style="background-color: grey;" :href="'/job_posts/' + job_post._id">Read more</b-button>
-              </div>
+      <b-button id="delete_jobs_button" @click="deleteJobs()">Delete Jobs</b-button>
+      <b-row>
+            <div v-for="job_post in job_posts" v-bind:key="job_post._id">
+              <b-col fluid="md">
+                <div class="card">
+                  <img src="https://visaguideinfo.com/wp-content/uploads/2020/02/0.jpg" class="card-img-top" alt="company_pic">
+                  <div class="card-body">
+                    <h2 class="card-title">{{job_post.job_title}}</h2>
+                    <p class="card-text">Post Date: {{job_post.post_date.substring(0,10)}}</p>
+                    <p class="card-text">Deadline: {{job_post.deadline.substring(0,10)}}</p>
+                    <b-button class="read_more" style="background-color: grey;" :href="'/job_posts/' + job_post._id">Read more</b-button>
+                  </div>
+                </div>
+              </b-col>
             </div>
-          </b-col>
-        </div>
-    </b-row>
-</div>
-
-</div>
+        </b-row>
+      </div>
+  </b-container>
 </template>
 
 <script>
