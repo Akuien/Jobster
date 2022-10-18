@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-for="attribute in company" v-bind:key="attribute._id">
-            <b-card id="card" no-body class="overflow-hidden" style="max-width: 1200px;">
+            <b-card id="card" no-body class="overflow-hidden">
               <b-row no-gutters>
                 <b-col md="6">
                   <b-card-img src="https://picsum.photos/400/400/?image=20" alt="Image" class="rounded-0"></b-card-img>
@@ -72,6 +72,7 @@ h4 {
 #card {
   max-height: 70rem;
   background-color: #c2cbd8;
+  width: 93%;
   padding: 10px;
   margin-top: 40px;
   margin-left: 80px;
@@ -84,8 +85,7 @@ h4 {
 
 @media screen and (min-width: 768px) {
   #card {
-    max-height: 70rem;
-    width: 90%;
+    max-height: 120rem;
     margin-left: 4rem;
     margin-right: 3rem;
   }
@@ -93,7 +93,7 @@ h4 {
 
 @media screen and (max-width: 768px) {
   #card {
-    max-height: 120rem;
+    max-height: 70rem;
     width: 95%;
     margin-left: 10px;
   }

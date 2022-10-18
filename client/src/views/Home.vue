@@ -10,21 +10,6 @@
     </b-jumbotron>
     </div>
     <div>
-  <b-card
-    overlay
-    img-src="https://picsum.photos/900/250/?image=3"
-    img-alt="Card Image"
-    text-variant="white"
-    title="Quality Assurance"
-  >
-    <b-card-text>
-      Jobster is your best freelancing website available that guarantees you quality delivery to both you as a company and to your
-      customers. Its a place compose of the best talents and networks availabe in the industry for you as a company.
-      The companies available are the best for your as a freelancer, top 5% best companies globally ready to work with you
-      at Jobster with flexible working hours and good pay for your talent. You also get to work with a team of like minded individuals
-      that ensure your personal and career growth.
-    </b-card-text>
-  </b-card>
 </div>
   </div>
 </template>
@@ -63,5 +48,11 @@ export default {
 }
 .btn_message {
   margin-bottom: 1em;
+}
+
+@media screen and (max-width: 768px) {
+.card {
+  height: 100rem;
+}
 }
 </style>
