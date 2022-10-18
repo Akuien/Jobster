@@ -90,7 +90,7 @@ export default {
     width: 100%;
   }
     .card {
-    max-height: 30rem;
+    height: 25rem;
     width: 20rem;
     background-color: #d5d7e0;
     color: rgb(75, 71, 71);
