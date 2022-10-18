@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Resume = require('../models/resume')
 
+/*
 router.delete('/resumes', function (response) {
 
     try {
@@ -9,12 +10,25 @@ router.delete('/resumes', function (response) {
             if (error) {
                 response.send(error);
             } else {
-                response.json({ "message": "Successfully deleted!" });
+                console.log("Successfully deleted!" );
             }
         })
     } catch (error) {
         response.status(500).json({ message: error.message});    }
-})
+}) */
+
+router.delete('/resumes', function(req, res) {
+    Resume.deleteMany({}, function(err, resumes) {
+        if (err) {
+            return res.status(409).json({
+                message: 'Deletion failed!', 'error': err
+            }); }
+        if (resumes === null) {
+            return res.status(404).json({'message': 'resumes not found'});
+        }
+        res.json(resumes);
+    });
+});
 
 // Create Resume
 router.post('/resumes', function(req, res, next){
