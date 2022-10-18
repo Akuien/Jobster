@@ -1591,20 +1591,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/api/job_posts/:id",
+					"raw": "{{host}}/api/job_posts/634ee8d99ed614213470552e",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
 						"job_posts",
-						":id"
-					],
-					"variable": [
-						{
-							"key": "id",
-							"value": "634ee8d99ed614213470552e"
-						}
+						"634ee8d99ed614213470552e"
 					]
 				}
 			},
@@ -1674,20 +1668,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/api/job_posts/:id",
+					"raw": "{{host}}/api/job_posts/634ee2659f21845b3c93db0c",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
 						"job_posts",
-						":id"
-					],
-					"variable": [
-						{
-							"key": "id",
-							"value": "634ee2659f21845b3c93db0c"
-						}
+						"634ee2659f21845b3c93db0c"
 					]
 				}
 			},
@@ -1719,20 +1707,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/api/freelancers/:id",
+					"raw": "{{host}}/api/freelancers/{{freelancer_id}}",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
 						"freelancers",
-						":id"
-					],
-					"variable": [
-						{
-							"key": "id",
-							"value": "{{freelancer_id}}"
-						}
+						"{{freelancer_id}}"
 					]
 				}
 			},
