@@ -1,4 +1,18 @@
 <template>
+  <div>
+    <div>
+      <b-button v-b-modal.modal-1 id="modal_button">Create new job post</b-button>
+        <b-modal id="modal-1" title="Create new job post" @ok="createJob()">
+          <h5>Job Title</h5>
+          <b-form-input type="text" class="form-control" v-model="body.job_title" placeholder="Enter job title"></b-form-input>
+          <h5>Description</h5>
+          <b-form-textarea type="text" class="form-control" v-model="body.description" placeholder="Enter job description" ></b-form-textarea>
+          <h5>Post Date</h5>
+          <b-form-input type="date" class="form-control" v-model="body.post_date" placeholder="Enter post date"></b-form-input>
+          <h5>Deadline</h5>
+          <b-form-input type="date" class="form-control" v-model="body.deadline" placeholder="Enter deadline for the job post"></b-form-input>
+        </b-modal>
+    </div>
     <b-row>
         <div v-for="job in jobs" v-bind:key="job._id">
           <b-col fluid="md">
@@ -13,16 +27,25 @@
           </b-col>
         </div>
     </b-row>
+  </div>
 </template>
 
 <script>
 import CompaniesOps from './CompaniesOps'
+import { Api } from '@/Api'
 
 export default {
   name: 'jobs',
   data() {
     return {
-      jobs: []
+      jobs: [],
+      body: {
+        job_title: '',
+        deadline: Date,
+        post_date: Date,
+        description: '',
+        company: this.$route.params.id
+      }
     }
   },
   methods: {
@@ -30,6 +53,16 @@ export default {
       CompaniesOps.getAllJobs(id)
         .then(response => {
           this.jobs = response.data
+        })
+        .catch(error => {
+          this.$toasted.show(error)
+        })
+    },
+    createJob() {
+      Api.post('/companies/' + this.$route.params.id + '/job_posts', this.body)//used this method because post from CompaniesOps doesnt work
+        .then(() => {
+          this.$toasted.show('Job successfully created!')
+          window.location.reload()
         })
         .catch(error => {
           this.$toasted.show(error)
@@ -43,6 +76,15 @@ export default {
 </script>
 
 <style scoped>
+
+  #modal_button {
+    margin-top: 2rem;
+  }
+
+  .form-control {
+    margin-bottom: 2rem;
+  }
+
   img {
     height: 12rem;
     width: 100%;
