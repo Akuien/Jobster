@@ -146,11 +146,11 @@ router.post('/companies/:id/job_posts', async (request, response) => {
         const createdJob = await createJobPost.save();
 
         
-        Company.findByIdAndUpdate({ "_id": id }, { $push: { job_post: createdJob } }, { safe: true, upsert: true }, function (error, job_post) {
+        Company.findByIdAndUpdate({ "_id": id }, { $push: { job_posts: createdJob } }, { safe: true, upsert: true }, function (error, job_posts) {
             if (error) {
                 response.send(error);
             } else {
-                response.json(job_post);
+                response.json(job_posts);
             }
         });
             
