@@ -95,7 +95,7 @@ p {
 #card {
     width: 90%;
     margin-left: 20px;
-    max-height: 35rem;
+    height: 35rem;
   }
 #edit_button {
   margin-top: 5px;

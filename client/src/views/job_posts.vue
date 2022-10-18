@@ -11,21 +11,25 @@
         </b-card-text>
          </b-card>
          <button type="button" class="btn btn-primary" v-on:click="isInvisible = !isInvisible">Rewrite job</button>
+         <h5 v-if="!isInvisible">Job Title</h5>
          <b-row>
           <b-col>
             <b-form-input v-if="!isInvisible" type="text" class="form-control" v-model="body.job_title" placeholder="Change job title"></b-form-input>
           </b-col>
         </b-row>
+        <h5 v-if="!isInvisible">Job Deadline</h5>
         <b-row>
           <b-col>
             <b-form-input v-if="!isInvisible" type="date" class="form-control" v-model="body.deadline" placeholder="Enter the job deadline, in YYYY-MM-DD format"></b-form-input>
           </b-col>
         </b-row>
+        <h5 v-if="!isInvisible">Job Description</h5>
         <b-row>
             <b-col>
               <b-form-textarea rows="5" max-rows="8" v-if="!isInvisible" type="text" class="form-control" v-model="body.description" placeholder="Change description"></b-form-textarea>
             </b-col>
         </b-row>
+        <h5 v-if="!isInvisible">Job Post Date</h5>
         <b-row>
             <b-col>
               <b-form-input v-if="!isInvisible" type="date" class="form-control" v-model="body.post_date" placeholder="Enter the post date, in YYYY-MM-DD format"></b-form-input>
@@ -62,7 +66,7 @@ h1 {
   margin-top: 20px;
 }
 #card {
-  max-height: 70rem;
+  height: 50rem;
   background-color: #c2cbd8;
   padding: 10px;
   margin-top: 40px;
@@ -79,6 +83,9 @@ h1 {
     box-shadow: 10px 10px 15px -7px gray;
     color: black;
 }
+h5 {
+  margin-top: 2rem;
+}
 @media screen and (min-width: 768px) {
   #card {
     max-height: 120rem;
@@ -88,7 +95,7 @@ h1 {
 }
 @media screen and (max-width: 768px) {
   #card {
-    max-height: 220rem;
+    max-height: 80rem;
     width: 95%;
     margin-left: 10px;
   }
