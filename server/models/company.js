@@ -15,7 +15,7 @@ const CompanySchema = new Schema({
     company_email: { type: String, required: true },
     company_phone: {type: String, required: true },
     password: {type: String, required: true},
-    job_posts: [{type: Schema.Types.ObjectId, ref: 'Job_posts'}]
+    job_posts: [{type: Array, ref: 'Job_posts', required: false}]
 });
 
 // getting company name
