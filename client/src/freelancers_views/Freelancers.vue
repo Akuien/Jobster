@@ -46,7 +46,7 @@
     background-color: #eceff2;
     padding: 10px;
     margin-top: 40px;
-    margin-left: 50px;
+    margin-left: 30px;
     margin-bottom: 20px;
     border-radius: 8px;
     box-shadow: 0px 8px 15px -7px gray;
@@ -63,7 +63,8 @@
   }
   @media screen and (max-width: 768px) {
    .card {
-     margin-left: 13%;
+     margin-right: 2rem;
+     margin-left: 1rem;
     }
 }
 </style>
