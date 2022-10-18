@@ -6,7 +6,7 @@
           <h5>Job Title</h5>
           <b-form-input type="text" class="form-control" v-model="body.job_title" placeholder="Enter job title"></b-form-input>
           <h5>Description</h5>
-          <b-form-textarea type="text" class="form-control" v-model="body.description" placeholder="Enter job description" ></b-form-textarea>
+          <b-form-textarea type="text" class="form-control" v-model="body.description" placeholder="Enter job description" maxlength="450"></b-form-textarea>
           <h5>Post Date</h5>
           <b-form-input type="date" class="form-control" v-model="body.post_date" placeholder="Enter post date"></b-form-input>
           <h5>Deadline</h5>
@@ -59,7 +59,7 @@ export default {
         })
     },
     createJob() {
-      Api.post('/companies/' + this.$route.params.id + '/job_posts', this.body)//used this method because post from CompaniesOps doesnt work
+      Api.post('/companies/' + this.$route.params.id + '/job_posts', this.body)// used this method because post from CompaniesOps doesnt work
         .then(() => {
           this.$toasted.show('Job successfully created!')
           window.location.reload()

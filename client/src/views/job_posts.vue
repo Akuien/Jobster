@@ -26,7 +26,7 @@
         <h5 v-if="!isInvisible">Job Description</h5>
         <b-row>
             <b-col>
-              <b-form-textarea rows="5" max-rows="8" v-if="!isInvisible" type="text" class="form-control" v-model="body.description" placeholder="Change description"></b-form-textarea>
+              <b-form-textarea rows="5" max-rows="8" v-if="!isInvisible" type="text" class="form-control" v-model="body.description" placeholder="Change description" maxlength="450"></b-form-textarea>
             </b-col>
         </b-row>
         <h5 v-if="!isInvisible">Job Post Date</h5>
