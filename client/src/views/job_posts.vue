@@ -18,7 +18,7 @@
         </b-row>
         <b-row>
           <b-col>
-            <b-form-input v-if="!isInvisible" type="text" class="form-control" v-model="body.deadline" placeholder="Enter the job deadline, in YYYY-MM-DD format"></b-form-input>
+            <b-form-input v-if="!isInvisible" type="date" class="form-control" v-model="body.deadline" placeholder="Enter the job deadline, in YYYY-MM-DD format"></b-form-input>
           </b-col>
         </b-row>
         <b-row>
@@ -28,7 +28,7 @@
         </b-row>
         <b-row>
             <b-col>
-              <b-form-input v-if="!isInvisible" type="text" class="form-control" v-model="body.post_date" placeholder="Enter the post date, in YYYY-MM-DD format"></b-form-input>
+              <b-form-input v-if="!isInvisible" type="date" class="form-control" v-model="body.post_date" placeholder="Enter the post date, in YYYY-MM-DD format"></b-form-input>
             </b-col>
         </b-row>
         <div style="padding:5em">
