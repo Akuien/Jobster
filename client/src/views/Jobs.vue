@@ -1,5 +1,4 @@
 <template>
-  <b-container>
   <div>
       <b-button id="delete_jobs_button" @click="deleteJobs()">Delete Jobs</b-button>
       <b-row>
@@ -18,7 +17,6 @@
             </div>
         </b-row>
       </div>
-  </b-container>
 </template>
 
 <script>
@@ -69,6 +67,11 @@ export default {
 </script>
 
 <style scoped>
+
+#delete_jobs_button {
+  margin-top: 2rem;
+}
+
 .read_more {
   background-color: rgb(125, 92, 175);
 }
