@@ -13,6 +13,19 @@
 					"listen": "test",
 					"script": {
 						"exec": [
+							"//Save response data in environment variable\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"var freelancerId = jsonData._id;\r",
+							"pm.environment.set(\"freelancer_id\", freelancerId);\r",
+							"\r",
+							"var getFreelancerId = pm.variables.get(\"freelancer_id\")\r",
+							"\r",
+							"\r",
+							"pm.globals.set(\"freelancer_id\", freelancerId);\r",
+							"pm.globals.get(\"freelancer_id\");\r",
+							"\r",
+							"\r",
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});"
@@ -32,7 +45,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "\r\n        {\r\n            \"first_name\": \"Antonio\",\r\n            \"last_name\": \"Johnsson\",\r\n            \"email_address\": \"johnny33@gmail.com\",\r\n            \"phone_number\": \"+467001122\",\r\n            \"description\": \"Hi, I'm Antonio a fullstack developer with years of experience in javascript, typescript, bootstrap and VUe\",\r\n            \"password\": \"AntonioG\"\r\n        }",
+					"raw": "\r\n        {\r\n            \"first_name\": \"Akuieno\",\r\n            \"last_name\": \"Deng\",\r\n            \"email_address\": \"johnny33@gmail.com\",\r\n            \"phone_number\": \"+467001122\",\r\n            \"description\": \"Hi, I'm Antonio a fullstack developer with years of experience in javascript, typescript, bootstrap and VUe\",\r\n            \"password\": \"AntonioG\"\r\n        }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -355,7 +368,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\r\n        \"phone_number\": \"+1511223344\",\r\n        \"description\": \"Hi, I am Mark Zuckerberg! I'm a young engineer with skills in software development, project management\"\r\n    }",
+					"raw": "{\r\n\r\n        \"first_name\": \"Paull\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -363,26 +376,20 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/api/freelancers/:id",
+					"raw": "{{host}}/api/freelancers/{{freelancer_id}}",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
 						"freelancers",
-						":id"
+						"{{freelancer_id}}"
 					],
 					"query": [
 						{
 							"key": "",
 							"value": null,
 							"disabled": true
-						}
-					],
-					"variable": [
-						{
-							"key": "id",
-							"value": "634075b70d518d755c8a54f6"
 						}
 					]
 				}
@@ -478,6 +485,20 @@
 					"listen": "test",
 					"script": {
 						"exec": [
+							"//Save response data in environment variable\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"var resumeId = jsonData._id;\r",
+							"pm.environment.set(\"resume_id\", resumeId);\r",
+							"\r",
+							"var getResumeId = pm.variables.get(\"resume_id\")\r",
+							"\r",
+							"\r",
+							"pm.globals.set(\"resume_id\", resumeId);\r",
+							"pm.globals.get(\"resume_id\");\r",
+							"\r",
+							"\r",
+							"\r",
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});"
@@ -491,7 +512,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"education_field\":\"Lindholmen park\",\r\n\"experience_field\":\"Internship\",\r\n\"skills_field\":\"Python, JavaScript\",\r\n\"freelancer\":{\"_id\":\"632cb232cbd72d4de4994032\"}\r\n}",
+					"raw": "{\r\n\"education_field\":\"Johhaneberg Science park\",\r\n\"experience_field\":\"Internship\",\r\n\"skills_field\":\"Python, JavaScript\",\r\n\"freelancer\":{\"_id\":\"{{freelancer_id}}\"}\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -511,8 +532,8 @@
 					],
 					"query": [
 						{
-							"key": "id",
-							"value": "633c5501eecc40547050332f",
+							"key": "",
+							"value": "",
 							"disabled": true
 						},
 						{
@@ -524,7 +545,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "633c5501eecc40547050332f"
+							"value": "{{freelancer_id}}"
 						}
 					]
 				}
@@ -697,9 +718,21 @@
 					}
 				}
 			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "{{host}}/api/freelancers/:id/resumes",
 					"host": [
@@ -721,7 +754,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "632e2a906f003d21a4ad5714"
+							"value": "{{freelancer_id}}"
 						}
 					]
 				}
@@ -821,16 +854,16 @@
 					"file": {}
 				},
 				"url": {
-					"raw": "{{host}}/api/freelancers/632e2a906f003d21a4ad5714/resumes/6346d0268229c376b01c95a0",
+					"raw": "{{host}}/api/freelancers/634ea348b111162d5c43cdcb/resumes/634ea4fab111162d5c43cdd8",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
 						"freelancers",
-						"632e2a906f003d21a4ad5714",
+						"634ea348b111162d5c43cdcb",
 						"resumes",
-						"6346d0268229c376b01c95a0"
+						"634ea4fab111162d5c43cdd8"
 					]
 				}
 			},
@@ -862,22 +895,21 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/api/freelancers/633c5501eecc40547050332f/resumes/633ccce041bce106c06ecffa",
+					"raw": "{{host}}/api/freelancers/:id/resumes/{{resume_id}}",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
 						"freelancers",
-						"633c5501eecc40547050332f",
+						":id",
 						"resumes",
-						"633ccce041bce106c06ecffa"
+						"{{resume_id}}"
 					],
-					"query": [
+					"variable": [
 						{
-							"key": "_id",
-							"value": "",
-							"disabled": true
+							"key": "id",
+							"value": "{{freelancer_id}}"
 						}
 					]
 				}
@@ -900,7 +932,7 @@
 				}
 			],
 			"request": {
-				"method": "GET",
+				"method": "DELETE",
 				"header": [],
 				"url": {
 					"raw": "{{host}}/api/freelancers/:id",
@@ -915,7 +947,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "633c96508d45dc2e507dd6f9"
+							"value": "{{freelancer_id}}"
 						}
 					]
 				}
@@ -1044,6 +1076,17 @@
 					"listen": "test",
 					"script": {
 						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"var companyId = jsonData._id;\r",
+							"pm.environment.set(\"company_id\", companyId);\r",
+							"\r",
+							"var getCompanyId = pm.variables.get(\"company_id\")\r",
+							"\r",
+							"\r",
+							"pm.globals.set(\"company_id\", companyId);\r",
+							"pm.globals.get(\"company_id\");\r",
+							"\r",
 							"pm.test(\"Status code is 201\", function () {\r",
 							"    pm.response.to.have.status(201);\r",
 							"});"
@@ -1057,7 +1100,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": " {\r\n        \"job_posts\": [],\r\n        \"company_name\": \"Facebook\",\r\n        \"company_description\": \"IT giants\",\r\n        \"company_location\": {\r\n            \"_id\": \"633c62402f33463bc8fcafea\",\r\n            \"city\": \"Gothenburg\",\r\n            \"country\": \"Sweden\",\r\n            \"address\": \"Norstan 12\"\r\n        },\r\n        \"company_email\": \"facebook@gmail.com\",\r\n        \"company_phone\": \"0711111111\",\r\n        \"company_id\": \"true\",\r\n        \"password\": \"Warrap\"\r\n    }",
+					"raw": " {\r\n        \"job_posts\": [],\r\n        \"company_name\": \"Polestar\",\r\n        \"company_description\": \"IT giants\",\r\n        \"company_location\": {\r\n            \"_id\": \"633c62402f33463bc8fcafea\",\r\n            \"city\": \"Gothenburg\",\r\n            \"country\": \"Sweden\",\r\n            \"address\": \"Norstan 12\"\r\n        },\r\n        \"company_email\": \"automotive@gmail.com\",\r\n        \"company_phone\": \"0711111111\",\r\n        \"company_id\": \"true\",\r\n        \"password\": \"Warrap\"\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1164,20 +1207,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{host}}/api/companies/:id",
+					"raw": "{{host}}/api/companies/{{company_id}}",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
 						"companies",
-						":id"
-					],
-					"variable": [
-						{
-							"key": "id",
-							"value": "6331df82a074c44348096225"
-						}
+						"{{company_id}}"
 					]
 				}
 			},
@@ -1232,7 +1269,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"company_phone\": \"07000011111\"\r\n}",
+					"raw": "{\r\n    \"company_description\": \"The maturity of the automotive industry has become a barrier to innovation. Over time, cars have started to all look the same, feel the same, be the same. We constantly question industry ideas and thinking, challenging ourselves to be better, never accepting mediocrity. We are passionate about design, performance and precision and obsess over each and every detail. We have no legacy, no ties to the past; we are free to find the right way. At Polestar, our passion drives us.We’re determined to improve the society we live in by accelerating the change to a fully electric, climate-neutral future.That’s why we’re taking concrete actions to achieve net-zero greenhouse gas emissions. Leading the development of new technologies. Embracing solutions for a circular economy.\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1240,20 +1277,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/api/companies/:id",
+					"raw": "{{host}}/api/companies/{{company_id}}",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
 						"companies",
-						":id"
-					],
-					"variable": [
-						{
-							"key": "id",
-							"value": "6331df82a074c44348096225"
-						}
+						"{{company_id}}"
 					]
 				}
 			},
@@ -1266,6 +1297,20 @@
 					"listen": "test",
 					"script": {
 						"exec": [
+							"//Save response data in environment variable\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"var job_postId = jsonData._id;\r",
+							"pm.environment.set(\"job_post_id\", job_postId);\r",
+							"\r",
+							"var getJob_postId = pm.variables.get(\"job_post_id\")\r",
+							"\r",
+							"\r",
+							"pm.globals.set(\"job_post_id\", job_postId);\r",
+							"pm.globals.get(\"job_post_id\");\r",
+							"\r",
+							"\r",
+							"\r",
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});"
@@ -1279,7 +1324,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \r\n    \"job_title\" :\"database admin12\",\r\n    \"deadline\": \"2022-01-23\",\r\n    \"post_date\": \"2021-12-26\",\r\n    \"description\": \"DevOps engineer\",\r\n    \"company\": {\"_id\": \"63303adbdae2b5089cc3d620\"}\r\n}",
+					"raw": "{\r\n    \r\n    \"job_title\" :\"Autonomous Driven system Developer\",\r\n    \"deadline\": \"2022-10-13\",\r\n    \"post_date\": \"2022-12-26\",\r\n    \"description\": \"We want to expand the Inhouse team with experienced and creative system developers! We are looking for you who like to test new techniques, are responsible, structured and have an eye for details. You value good collaboration and want development opportunities. If you want to work with exciting and varied projects at the forefront of technology and together with us build a sustainable future, read on and apply today! WHO ARE THE TEAM We are one of ALTEN's in-house team in Gothenburg and the team consists of ten wonderful colleagues who work together on customer assignments of varying sizes and complexity and in different industries. We often collaborate with our sister department Design & Visualisation's awesome UX/UI designers. We want to expand our amazing team with new talent and hope you want to join us and contribute your skills and maybe you have some new innovative ideas to share too. Join us on our journey! WE OFFER YOU As a system developer, you have the opportunity to work with what you are passionate about and at the same time develop and broaden your skills. Together with your coaching manager, you build your career so that you can develop and realize your goals and dreams! Through our internal networks ALTEN Sports and Women@ALTEN, you are also given the opportunity to pursue issues and activities that you are passionate about together with your colleagues. At ALTEN, we think it is important to have a balance between work and leisure, which is why we offer three extra days off per year. We also offer benefits such as: Personal training budget Staff cycle Health care allowance Collective agreement, occupational pension and insurance THE CONSULTANT ROLE As a system developer with us, you will be part of our wonderful international consulting team where our consultants possess various skills in IT. You will have varied tasks and will have the opportunity to work on national and international projects with one of our world-leading customers or in-house. At ALTEN, we have a large range of assignments with many of the leading companies in several different industries such as vehicles, telecoms, energy, engineering, pharmaceuticals and medical technology, where our consultants are active throughout the entire product development chain. Every employee is important to ALTEN's success and therefore we value you as an individual and work actively with personal development. As a system developer, you have competence and a minimum of three years of experience in backend or frontend development, maybe even full stack. You have the following skills: Requirements: Java React Typescript Worked in agile environments Speaks Swedish without hindrance Merit: AWS or Azure React Native Microservices Interviews are held continuously, so submit your application today!\",\r\n    \"company\": {\"_id\": \"6349863fb1b9193d7437db99\"}\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1307,7 +1352,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "63303adbdae2b5089cc3d620"
+							"value": "{{company_id}}"
 						}
 					]
 				}
@@ -1346,7 +1391,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "6331df82a074c44348096225"
+							"value": "{{company_id}}"
 						}
 					]
 				}
@@ -1490,7 +1535,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "6335ba771d523134ace15d1b"
+							"value": "{{company_id}}"
 						}
 					]
 				}
@@ -1566,7 +1611,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "6345dbacb6dbf43258f2c1a1"
+							"value": "634aeb7b014e28241099d767"
 						}
 					]
 				}
@@ -1604,7 +1649,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "6345dbacb6dbf43258f2c1a1"
+							"value": "634aeb7b014e28241099d767"
 						}
 					]
 				}
@@ -1649,7 +1694,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "6345dbacb6dbf43258f2c1a1"
+							"value": "634aeb7b014e28241099d767"
 						}
 					]
 				}
@@ -1694,7 +1739,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "63480f27e02ed57088fc02f9"
+							"value": "{{freelancer_id}}"
 						}
 					]
 				}
@@ -1707,16 +1752,16 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{host}}/api/companies/633cd6da3aac8210606c6b6d/job_posts/633db0f97c3e574f1872191b",
+					"raw": "{{host}}/api/companies/6331df82a074c44348096225/job_posts/6331eec19d56c34310d37301\n",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
 						"companies",
-						"633cd6da3aac8210606c6b6d",
+						"6331df82a074c44348096225",
 						"job_posts",
-						"633db0f97c3e574f1872191b"
+						"6331eec19d56c34310d37301\n"
 					],
 					"query": [
 						{
@@ -1735,16 +1780,34 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{host}}/api/companies/6331df82a074c44348096225/job_posts/6331ee9f9d56c34310d372ff",
+					"raw": "{{host}}/api/companies/{{company_id}}/job_posts/634eade67e5f6f3a4c98fe00",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
 						"companies",
-						"6331df82a074c44348096225",
+						"{{company_id}}",
 						"job_posts",
-						"6331ee9f9d56c34310d372ff"
+						"634eade67e5f6f3a4c98fe00"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete resumes",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/resumes",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"resumes"
 					]
 				}
 			},

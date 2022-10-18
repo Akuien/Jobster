@@ -9,7 +9,7 @@ router.delete('/resumes', function (response) {
             if (error) {
                 response.send(error);
             } else {
-                response.json({ "message": "Successfully deleted!" });
+                console.log({ "message": "Successfully deleted!" });
             }
         })
     } catch (error) {

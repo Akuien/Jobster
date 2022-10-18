@@ -59,7 +59,7 @@ export default {
         })
     },
     createJob() {
-      Api.post('/companies/' + this.$route.params.id + '/job_posts', this.body)//used this method because post from CompaniesOps doesnt work
+      Api.post('/companies/' + this.$route.params.id + '/job_posts', this.body)// used this method because post from CompaniesOps doesnt work
         .then(() => {
           this.$toasted.show('Job successfully created!')
           window.location.reload()
